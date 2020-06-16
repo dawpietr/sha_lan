@@ -1,0 +1,4 @@
+wygenerowanie gramatyki
+
+java -jar ./lib/antlr-4.8-complete.jar -no-visitor -no-listener ./Shadow.g4 -o ./src
+
