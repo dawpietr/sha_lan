@@ -22,9 +22,14 @@ public class MainShadow extends ShadowBaseVisitor <Object> {
         ShadowLexer ShadowLexer = new ShadowLexer(charStream);
         CommonTokenStream commonTokenStream = new CommonTokenStream(ShadowLexer);
         ShadowParser ShadowParser = new ShadowParser(commonTokenStream);
-        ParseTree context = ShadowParser.program();
-        ShadowParser.ProgramContext programContext = ShadowParser.program();
-        ShadowBaseVisitor visitor = new ShadowBaseVisitor() {
+        ShadowParser.ProgramContext tree = ShadowParser.program();
+
+        ParseTreeWalker walker = new ParseTreeWalker();
+        ShadowListener listener = new ShadowBaseListener();
+        //ParseTreeWalker.DEFAULT.walk(listener, tree);
+        walker.walk(listener, tree);
+
+        /*ShadowBaseVisitor visitor = new ShadowBaseVisitor() {
             @Override
             public Object visitProgram(ShadowParser.ProgramContext ctx) {
 
@@ -215,36 +220,14 @@ public class MainShadow extends ShadowBaseVisitor <Object> {
                 System.out.println("error");
                 return null;
             }
-        };
-        visitor.visit(context);
-        System.out.println("???");
+        };*/
+        //visitor.visit(context);
+        //System.out.println("???");
         //System.out.println(visitor.visit(programContext));
         System.out.println("???");
-    }
-
-
-    List<MainShadow.zmienna> zmienne = new ArrayList<MainShadow.zmienna>();
-    List<stala> stale = new ArrayList<stala>();
-
-    public class zmienna {
-        String nazwa;
-        String wartosc;
-
-        public zmienna(String nazwa, String wartosc) {
-            this.nazwa = nazwa;
-            this.wartosc = wartosc;
-        }
-    }
-
-    public class stala {
-        String nazwa;
-        String wartosc;
-
-        public stala(String nazwa, String wartosc) {
-            this.nazwa = nazwa;
-            this.wartosc = wartosc;
-        }
-
 
     }
+
+
+
 }

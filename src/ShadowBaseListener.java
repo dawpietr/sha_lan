@@ -15,7 +15,9 @@ public class ShadowBaseListener implements ShadowListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterProgram(ShadowParser.ProgramContext ctx) { }
+	@Override public void enterProgram(ShadowParser.ProgramContext ctx) {
+		System.out.println("program");
+	}
 	/**
 	 * {@inheritDoc}
 	 *
@@ -27,7 +29,9 @@ public class ShadowBaseListener implements ShadowListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterKomunikat(ShadowParser.KomunikatContext ctx) { }
+	@Override public void enterKomunikat(ShadowParser.KomunikatContext ctx) {
+		System.out.println("komunikat " + ctx.getText());
+	}
 	/**
 	 * {@inheritDoc}
 	 *
@@ -39,7 +43,28 @@ public class ShadowBaseListener implements ShadowListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDzialanie_matematyczne(ShadowParser.Dzialanie_matematyczneContext ctx) { }
+	@Override public void enterDzialanie_matematyczne(ShadowParser.Dzialanie_matematyczneContext ctx) {
+		double lewa = Double.parseDouble(ctx.lewa.getText());
+		double prawa = Double.parseDouble(ctx.prawa.getText());
+		switch(ctx.ZNAK_MATEMATYCZNY().toString())
+		{
+			case "+":
+				System.out.println("Dodawanie " + lewa + " + " + prawa + "= " + (lewa+prawa));
+				break;
+			case "-":
+				System.out.println("Odejmowanie " + lewa + " + " + prawa + "= " + (lewa-prawa));
+				break;
+			case "/":
+				System.out.println("Dzielenie " + lewa + " + " + prawa + "= " + (lewa/prawa));
+				break;
+			case "*":
+				System.out.println("Mnozenie " + lewa + " + " + prawa + "= " + (lewa*prawa));
+				break;
+			case "^":
+				System.out.println("Potegowanie " + lewa + " + " + prawa + "= " + (Math.pow(lewa,prawa)));
+				break;
+		}
+	}
 	/**
 	 * {@inheritDoc}
 	 *
@@ -51,7 +76,11 @@ public class ShadowBaseListener implements ShadowListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUtworzeniestalej(ShadowParser.UtworzeniestalejContext ctx) { }
+	@Override public void enterUtworzeniestalej(ShadowParser.UtworzeniestalejContext ctx) {
+
+		Pamiec.dodajStala(ctx.lewa.getText(), ctx.prawa.getText());
+
+	}
 	/**
 	 * {@inheritDoc}
 	 *
@@ -63,7 +92,11 @@ public class ShadowBaseListener implements ShadowListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUtworzeniezmiennej(ShadowParser.UtworzeniezmiennejContext ctx) { }
+	@Override public void enterUtworzeniezmiennej(ShadowParser.UtworzeniezmiennejContext ctx) {
+
+		Pamiec.dodajZmienna(ctx.lewa.getText(), ctx.prawa.getText());
+
+	}
 	/**
 	 * {@inheritDoc}
 	 *
@@ -75,7 +108,9 @@ public class ShadowBaseListener implements ShadowListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterZmianazmiennej(ShadowParser.ZmianazmiennejContext ctx) { }
+	@Override public void enterZmianazmiennej(ShadowParser.ZmianazmiennejContext ctx) {
+		System.out.println(Pamiec.zmienZmienna(ctx.lewa.getText(), ctx.prawa.getText()));
+	}
 	/**
 	 * {@inheritDoc}
 	 *

@@ -1,6 +1,9 @@
 1+2;
-2+5;
+2-5;
+2*3;
+9/3;
+2^4;
 stala a = 12;
-ala;ma;kota;
-sprzedalemmotor;
-nielubieANTLR;
+zmienna a = 12;
+zmienna b = 13;
+b=14;
