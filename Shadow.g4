@@ -14,19 +14,15 @@ komunikat:   wyrazenie
             |petla_dla
             |deklaracja_funkcji
             |wywolanie_funkcji
+            |dzialanie_matematyczne
             ;
 
-
+dzialanie_matematyczne: lewa=wyrazenie ZNAK_MATEMATYCZNY prawa=wyrazenie;
 utworzenie_stalej   : STALA lewa=wyrazenie PRZYPISANIE prawa=wyrazenie      #utworzeniestalej;
 utworzenie_zmiennej : ZMIENNA lewa=wyrazenie PRZYPISANIE prawa=wyrazenie    #utworzeniezmiennej;
 zmiana_zmiennej     : lewa=wyrazenie PRZYPISANIE prawa=wyrazenie            #zmianazmiennej;
 
-wyrazenie          :lewa=wyrazenie PLUS prawa=wyrazenie             #wyrazeniedodawania
-                   |lewa=wyrazenie MINUS prawa=wyrazenie            #wyrazenieodejmowania
-                   |lewa=wyrazenie MNOZENIE prawa=wyrazenie         #wyrazeniemnozenia
-                   |lewa=wyrazenie DZIELENIE prawa=wyrazenie        #wyrazeniedzielenia
-                   |lewa=wyrazenie POTEGOWANIE prawa=wyrazenie      #wyrazeniepotegowania
-                   |lewa=wyrazenie ZWIEKSZENIE                      #wyrazeniezwiekszenie
+wyrazenie          :lewa=wyrazenie ZWIEKSZENIE                      #wyrazeniezwiekszenie
                    |lewa=wyrazenie ZMNIEJSZENIE                     #wyrazeniezmniejszenie
                    |lewynaw wyrazenie prawynaw                      #wyrazenienawias
                    |wywolanie_funkcji                               #wyrazeniefunkcja
@@ -75,11 +71,7 @@ I : '&&';
 LUB : '||';
 ZWIEKSZENIE : '++';
 ZMNIEJSZENIE : '--';
-PLUS: '+';
-MINUS : '-';
-MNOZENIE : '*';
-DZIELENIE : '/';
-POTEGOWANIE: '^';
+ZNAK_MATEMATYCZNY: '+'|'-'|'*'|'/'|'^' ;
 BITI : '&';
 BITLUB : '|';
 MODULO : '%';

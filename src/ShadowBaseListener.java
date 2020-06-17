@@ -39,6 +39,18 @@ public class ShadowBaseListener implements ShadowListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterDzialanie_matematyczne(ShadowParser.Dzialanie_matematyczneContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDzialanie_matematyczne(ShadowParser.Dzialanie_matematyczneContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterUtworzeniestalej(ShadowParser.UtworzeniestalejContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -99,30 +111,6 @@ public class ShadowBaseListener implements ShadowListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterWyrazeniepotegowania(ShadowParser.WyrazeniepotegowaniaContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitWyrazeniepotegowania(ShadowParser.WyrazeniepotegowaniaContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterWyrazeniedzielenia(ShadowParser.WyrazeniedzieleniaContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitWyrazeniedzielenia(ShadowParser.WyrazeniedzieleniaContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterWyrazeniefunkcja(ShadowParser.WyrazeniefunkcjaContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -130,18 +118,6 @@ public class ShadowBaseListener implements ShadowListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitWyrazeniefunkcja(ShadowParser.WyrazeniefunkcjaContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterWyrazeniedodawania(ShadowParser.WyrazeniedodawaniaContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitWyrazeniedodawania(ShadowParser.WyrazeniedodawaniaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -159,18 +135,6 @@ public class ShadowBaseListener implements ShadowListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterWyrazeniemnozenia(ShadowParser.WyrazeniemnozeniaContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitWyrazeniemnozenia(ShadowParser.WyrazeniemnozeniaContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterWyrazenieznakowe(ShadowParser.WyrazenieznakoweContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -178,18 +142,6 @@ public class ShadowBaseListener implements ShadowListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitWyrazenieznakowe(ShadowParser.WyrazenieznakoweContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterWyrazenieodejmowania(ShadowParser.WyrazenieodejmowaniaContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitWyrazenieodejmowania(ShadowParser.WyrazenieodejmowaniaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

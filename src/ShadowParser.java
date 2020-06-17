@@ -21,19 +21,20 @@ public class ShadowParser extends Parser {
 		LKWADRAT=16, PKWADRAT=17, CUDZYSLOW=18, SREDNIK=19, PRZECINEK=20, KROPKA=21, 
 		PRZYPISANIE=22, WIEKSZE=23, MNIEJSZE=24, WYKRZYKNIK=25, PYTAJNIK=26, DWUKROPEK=27, 
 		POROWNANIE=28, NIEROWNE=29, I=30, LUB=31, ZWIEKSZENIE=32, ZMNIEJSZENIE=33, 
-		PLUS=34, MINUS=35, MNOZENIE=36, DZIELENIE=37, POTEGOWANIE=38, BITI=39, 
-		BITLUB=40, MODULO=41, STRZALKA=42, PODWOJNYDWUKROPEK=43, ZNAKI=44, LICZBY=45, 
-		BIALE_ZNAKI=46, KOMENTARZ=47, LINIA_KOMENTARZA=48;
+		ZNAK_MATEMATYCZNY=34, BITI=35, BITLUB=36, MODULO=37, STRZALKA=38, PODWOJNYDWUKROPEK=39, 
+		ZNAKI=40, LICZBY=41, BIALE_ZNAKI=42, KOMENTARZ=43, LINIA_KOMENTARZA=44;
 	public static final int
-		RULE_program = 0, RULE_komunikat = 1, RULE_utworzenie_stalej = 2, RULE_utworzenie_zmiennej = 3, 
-		RULE_zmiana_zmiennej = 4, RULE_wyrazenie = 5, RULE_zapytanie_jesli = 6, 
-		RULE_petla_dopoki = 7, RULE_petla_dla = 8, RULE_deklaracja_funkcji = 9, 
-		RULE_wywolanie_funkcji = 10, RULE_lewynaw = 11, RULE_prawynaw = 12;
+		RULE_program = 0, RULE_komunikat = 1, RULE_dzialanie_matematyczne = 2, 
+		RULE_utworzenie_stalej = 3, RULE_utworzenie_zmiennej = 4, RULE_zmiana_zmiennej = 5, 
+		RULE_wyrazenie = 6, RULE_zapytanie_jesli = 7, RULE_petla_dopoki = 8, RULE_petla_dla = 9, 
+		RULE_deklaracja_funkcji = 10, RULE_wywolanie_funkcji = 11, RULE_lewynaw = 12, 
+		RULE_prawynaw = 13;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"program", "komunikat", "utworzenie_stalej", "utworzenie_zmiennej", "zmiana_zmiennej", 
-			"wyrazenie", "zapytanie_jesli", "petla_dopoki", "petla_dla", "deklaracja_funkcji", 
-			"wywolanie_funkcji", "lewynaw", "prawynaw"
+			"program", "komunikat", "dzialanie_matematyczne", "utworzenie_stalej", 
+			"utworzenie_zmiennej", "zmiana_zmiennej", "wyrazenie", "zapytanie_jesli", 
+			"petla_dopoki", "petla_dla", "deklaracja_funkcji", "wywolanie_funkcji", 
+			"lewynaw", "prawynaw"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -44,7 +45,7 @@ public class ShadowParser extends Parser {
 			"'zwroc'", "'dopoki'", "'funkcja'", null, "'null'", "'('", "')'", "'{'", 
 			"'}'", "'['", "']'", "'\"'", "';'", "','", "'.'", "'='", "'>'", "'<'", 
 			"'!'", "'?'", "':'", "'=='", "'!='", "'&&'", "'||'", "'++'", "'--'", 
-			"'+'", "'-'", "'*'", "'/'", "'^'", "'&'", "'|'", "'%'", "'->'", "'::'"
+			null, "'&'", "'|'", "'%'", "'->'", "'::'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
@@ -55,9 +56,8 @@ public class ShadowParser extends Parser {
 			"LKWADRAT", "PKWADRAT", "CUDZYSLOW", "SREDNIK", "PRZECINEK", "KROPKA", 
 			"PRZYPISANIE", "WIEKSZE", "MNIEJSZE", "WYKRZYKNIK", "PYTAJNIK", "DWUKROPEK", 
 			"POROWNANIE", "NIEROWNE", "I", "LUB", "ZWIEKSZENIE", "ZMNIEJSZENIE", 
-			"PLUS", "MINUS", "MNOZENIE", "DZIELENIE", "POTEGOWANIE", "BITI", "BITLUB", 
-			"MODULO", "STRZALKA", "PODWOJNYDWUKROPEK", "ZNAKI", "LICZBY", "BIALE_ZNAKI", 
-			"KOMENTARZ", "LINIA_KOMENTARZA"
+			"ZNAK_MATEMATYCZNY", "BITI", "BITLUB", "MODULO", "STRZALKA", "PODWOJNYDWUKROPEK", 
+			"ZNAKI", "LICZBY", "BIALE_ZNAKI", "KOMENTARZ", "LINIA_KOMENTARZA"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -148,19 +148,19 @@ public class ShadowParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(31);
+			setState(33);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << STALA) | (1L << ZMIENNA) | (1L << DLA) | (1L << JESLI) | (1L << DOPOKI) | (1L << FUNKCJA) | (1L << LNAWIAS) | (1L << ZNAKI))) != 0)) {
 				{
 				{
-				setState(26);
+				setState(28);
 				komunikat();
-				setState(27);
+				setState(29);
 				match(SREDNIK);
 				}
 				}
-				setState(33);
+				setState(35);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -205,6 +205,9 @@ public class ShadowParser extends Parser {
 		public Wywolanie_funkcjiContext wywolanie_funkcji() {
 			return getRuleContext(Wywolanie_funkcjiContext.class,0);
 		}
+		public Dzialanie_matematyczneContext dzialanie_matematyczne() {
+			return getRuleContext(Dzialanie_matematyczneContext.class,0);
+		}
 		public KomunikatContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -228,72 +231,133 @@ public class ShadowParser extends Parser {
 		KomunikatContext _localctx = new KomunikatContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_komunikat);
 		try {
-			setState(43);
+			setState(46);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(34);
+				setState(36);
 				wyrazenie(0);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(35);
+				setState(37);
 				utworzenie_stalej();
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(36);
+				setState(38);
 				utworzenie_zmiennej();
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(37);
+				setState(39);
 				zmiana_zmiennej();
 				}
 				break;
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(38);
+				setState(40);
 				zapytanie_jesli();
 				}
 				break;
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(39);
+				setState(41);
 				petla_dopoki();
 				}
 				break;
 			case 7:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(40);
+				setState(42);
 				petla_dla();
 				}
 				break;
 			case 8:
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(41);
+				setState(43);
 				deklaracja_funkcji();
 				}
 				break;
 			case 9:
 				enterOuterAlt(_localctx, 9);
 				{
-				setState(42);
+				setState(44);
 				wywolanie_funkcji();
 				}
 				break;
+			case 10:
+				enterOuterAlt(_localctx, 10);
+				{
+				setState(45);
+				dzialanie_matematyczne();
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class Dzialanie_matematyczneContext extends ParserRuleContext {
+		public WyrazenieContext lewa;
+		public WyrazenieContext prawa;
+		public TerminalNode ZNAK_MATEMATYCZNY() { return getToken(ShadowParser.ZNAK_MATEMATYCZNY, 0); }
+		public List<WyrazenieContext> wyrazenie() {
+			return getRuleContexts(WyrazenieContext.class);
+		}
+		public WyrazenieContext wyrazenie(int i) {
+			return getRuleContext(WyrazenieContext.class,i);
+		}
+		public Dzialanie_matematyczneContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_dzialanie_matematyczne; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).enterDzialanie_matematyczne(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitDzialanie_matematyczne(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof ShadowVisitor ) return ((ShadowVisitor<? extends T>)visitor).visitDzialanie_matematyczne(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final Dzialanie_matematyczneContext dzialanie_matematyczne() throws RecognitionException {
+		Dzialanie_matematyczneContext _localctx = new Dzialanie_matematyczneContext(_ctx, getState());
+		enterRule(_localctx, 4, RULE_dzialanie_matematyczne);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(48);
+			((Dzialanie_matematyczneContext)_localctx).lewa = wyrazenie(0);
+			setState(49);
+			match(ZNAK_MATEMATYCZNY);
+			setState(50);
+			((Dzialanie_matematyczneContext)_localctx).prawa = wyrazenie(0);
 			}
 		}
 		catch (RecognitionException re) {
@@ -347,18 +411,18 @@ public class ShadowParser extends Parser {
 
 	public final Utworzenie_stalejContext utworzenie_stalej() throws RecognitionException {
 		Utworzenie_stalejContext _localctx = new Utworzenie_stalejContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_utworzenie_stalej);
+		enterRule(_localctx, 6, RULE_utworzenie_stalej);
 		try {
 			_localctx = new UtworzeniestalejContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(45);
+			setState(52);
 			match(STALA);
-			setState(46);
+			setState(53);
 			((UtworzeniestalejContext)_localctx).lewa = wyrazenie(0);
-			setState(47);
+			setState(54);
 			match(PRZYPISANIE);
-			setState(48);
+			setState(55);
 			((UtworzeniestalejContext)_localctx).prawa = wyrazenie(0);
 			}
 		}
@@ -413,18 +477,18 @@ public class ShadowParser extends Parser {
 
 	public final Utworzenie_zmiennejContext utworzenie_zmiennej() throws RecognitionException {
 		Utworzenie_zmiennejContext _localctx = new Utworzenie_zmiennejContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_utworzenie_zmiennej);
+		enterRule(_localctx, 8, RULE_utworzenie_zmiennej);
 		try {
 			_localctx = new UtworzeniezmiennejContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(50);
+			setState(57);
 			match(ZMIENNA);
-			setState(51);
+			setState(58);
 			((UtworzeniezmiennejContext)_localctx).lewa = wyrazenie(0);
-			setState(52);
+			setState(59);
 			match(PRZYPISANIE);
-			setState(53);
+			setState(60);
 			((UtworzeniezmiennejContext)_localctx).prawa = wyrazenie(0);
 			}
 		}
@@ -478,16 +542,16 @@ public class ShadowParser extends Parser {
 
 	public final Zmiana_zmiennejContext zmiana_zmiennej() throws RecognitionException {
 		Zmiana_zmiennejContext _localctx = new Zmiana_zmiennejContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_zmiana_zmiennej);
+		enterRule(_localctx, 10, RULE_zmiana_zmiennej);
 		try {
 			_localctx = new ZmianazmiennejContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(55);
+			setState(62);
 			((ZmianazmiennejContext)_localctx).lewa = wyrazenie(0);
-			setState(56);
+			setState(63);
 			match(PRZYPISANIE);
-			setState(57);
+			setState(64);
 			((ZmianazmiennejContext)_localctx).prawa = wyrazenie(0);
 			}
 		}
@@ -555,56 +619,6 @@ public class ShadowParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class WyrazeniepotegowaniaContext extends WyrazenieContext {
-		public WyrazenieContext lewa;
-		public WyrazenieContext prawa;
-		public TerminalNode POTEGOWANIE() { return getToken(ShadowParser.POTEGOWANIE, 0); }
-		public List<WyrazenieContext> wyrazenie() {
-			return getRuleContexts(WyrazenieContext.class);
-		}
-		public WyrazenieContext wyrazenie(int i) {
-			return getRuleContext(WyrazenieContext.class,i);
-		}
-		public WyrazeniepotegowaniaContext(WyrazenieContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).enterWyrazeniepotegowania(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitWyrazeniepotegowania(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ShadowVisitor ) return ((ShadowVisitor<? extends T>)visitor).visitWyrazeniepotegowania(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class WyrazeniedzieleniaContext extends WyrazenieContext {
-		public WyrazenieContext lewa;
-		public WyrazenieContext prawa;
-		public TerminalNode DZIELENIE() { return getToken(ShadowParser.DZIELENIE, 0); }
-		public List<WyrazenieContext> wyrazenie() {
-			return getRuleContexts(WyrazenieContext.class);
-		}
-		public WyrazenieContext wyrazenie(int i) {
-			return getRuleContext(WyrazenieContext.class,i);
-		}
-		public WyrazeniedzieleniaContext(WyrazenieContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).enterWyrazeniedzielenia(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitWyrazeniedzielenia(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ShadowVisitor ) return ((ShadowVisitor<? extends T>)visitor).visitWyrazeniedzielenia(this);
-			else return visitor.visitChildren(this);
-		}
-	}
 	public static class WyrazeniefunkcjaContext extends WyrazenieContext {
 		public Wywolanie_funkcjiContext wywolanie_funkcji() {
 			return getRuleContext(Wywolanie_funkcjiContext.class,0);
@@ -621,31 +635,6 @@ public class ShadowParser extends Parser {
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof ShadowVisitor ) return ((ShadowVisitor<? extends T>)visitor).visitWyrazeniefunkcja(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class WyrazeniedodawaniaContext extends WyrazenieContext {
-		public WyrazenieContext lewa;
-		public WyrazenieContext prawa;
-		public TerminalNode PLUS() { return getToken(ShadowParser.PLUS, 0); }
-		public List<WyrazenieContext> wyrazenie() {
-			return getRuleContexts(WyrazenieContext.class);
-		}
-		public WyrazenieContext wyrazenie(int i) {
-			return getRuleContext(WyrazenieContext.class,i);
-		}
-		public WyrazeniedodawaniaContext(WyrazenieContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).enterWyrazeniedodawania(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitWyrazeniedodawania(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ShadowVisitor ) return ((ShadowVisitor<? extends T>)visitor).visitWyrazeniedodawania(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -674,31 +663,6 @@ public class ShadowParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class WyrazeniemnozeniaContext extends WyrazenieContext {
-		public WyrazenieContext lewa;
-		public WyrazenieContext prawa;
-		public TerminalNode MNOZENIE() { return getToken(ShadowParser.MNOZENIE, 0); }
-		public List<WyrazenieContext> wyrazenie() {
-			return getRuleContexts(WyrazenieContext.class);
-		}
-		public WyrazenieContext wyrazenie(int i) {
-			return getRuleContext(WyrazenieContext.class,i);
-		}
-		public WyrazeniemnozeniaContext(WyrazenieContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).enterWyrazeniemnozenia(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitWyrazeniemnozenia(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ShadowVisitor ) return ((ShadowVisitor<? extends T>)visitor).visitWyrazeniemnozenia(this);
-			else return visitor.visitChildren(this);
-		}
-	}
 	public static class WyrazenieznakoweContext extends WyrazenieContext {
 		public TerminalNode ZNAKI() { return getToken(ShadowParser.ZNAKI, 0); }
 		public WyrazenieznakoweContext(WyrazenieContext ctx) { copyFrom(ctx); }
@@ -716,31 +680,6 @@ public class ShadowParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class WyrazenieodejmowaniaContext extends WyrazenieContext {
-		public WyrazenieContext lewa;
-		public WyrazenieContext prawa;
-		public TerminalNode MINUS() { return getToken(ShadowParser.MINUS, 0); }
-		public List<WyrazenieContext> wyrazenie() {
-			return getRuleContexts(WyrazenieContext.class);
-		}
-		public WyrazenieContext wyrazenie(int i) {
-			return getRuleContext(WyrazenieContext.class,i);
-		}
-		public WyrazenieodejmowaniaContext(WyrazenieContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).enterWyrazenieodejmowania(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitWyrazenieodejmowania(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ShadowVisitor ) return ((ShadowVisitor<? extends T>)visitor).visitWyrazenieodejmowania(this);
-			else return visitor.visitChildren(this);
-		}
-	}
 
 	public final WyrazenieContext wyrazenie() throws RecognitionException {
 		return wyrazenie(0);
@@ -751,13 +690,13 @@ public class ShadowParser extends Parser {
 		int _parentState = getState();
 		WyrazenieContext _localctx = new WyrazenieContext(_ctx, _parentState);
 		WyrazenieContext _prevctx = _localctx;
-		int _startState = 10;
-		enterRecursionRule(_localctx, 10, RULE_wyrazenie, _p);
+		int _startState = 12;
+		enterRecursionRule(_localctx, 12, RULE_wyrazenie, _p);
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(66);
+			setState(73);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
 			case LNAWIAS:
@@ -766,11 +705,11 @@ public class ShadowParser extends Parser {
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
-				setState(60);
+				setState(67);
 				lewynaw();
-				setState(61);
+				setState(68);
 				wyrazenie(0);
-				setState(62);
+				setState(69);
 				prawynaw();
 				}
 				break;
@@ -779,7 +718,7 @@ public class ShadowParser extends Parser {
 				_localctx = new WyrazeniefunkcjaContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(64);
+				setState(71);
 				wywolanie_funkcji();
 				}
 				break;
@@ -788,7 +727,7 @@ public class ShadowParser extends Parser {
 				_localctx = new WyrazenieznakoweContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(65);
+				setState(72);
 				match(ZNAKI);
 				}
 				break;
@@ -796,7 +735,7 @@ public class ShadowParser extends Parser {
 				throw new NoViableAltException(this);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(89);
+			setState(81);
 			_errHandler.sync(this);
 			_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
@@ -804,100 +743,35 @@ public class ShadowParser extends Parser {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(87);
+					setState(79);
 					_errHandler.sync(this);
 					switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
 					case 1:
 						{
-						_localctx = new WyrazeniedodawaniaContext(new WyrazenieContext(_parentctx, _parentState));
-						((WyrazeniedodawaniaContext)_localctx).lewa = _prevctx;
+						_localctx = new WyrazeniezwiekszenieContext(new WyrazenieContext(_parentctx, _parentState));
+						((WyrazeniezwiekszenieContext)_localctx).lewa = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_wyrazenie);
-						setState(68);
-						if (!(precpred(_ctx, 10))) throw new FailedPredicateException(this, "precpred(_ctx, 10)");
-						setState(69);
-						match(PLUS);
-						setState(70);
-						((WyrazeniedodawaniaContext)_localctx).prawa = wyrazenie(11);
+						setState(75);
+						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
+						setState(76);
+						match(ZWIEKSZENIE);
 						}
 						break;
 					case 2:
 						{
-						_localctx = new WyrazenieodejmowaniaContext(new WyrazenieContext(_parentctx, _parentState));
-						((WyrazenieodejmowaniaContext)_localctx).lewa = _prevctx;
-						pushNewRecursionContext(_localctx, _startState, RULE_wyrazenie);
-						setState(71);
-						if (!(precpred(_ctx, 9))) throw new FailedPredicateException(this, "precpred(_ctx, 9)");
-						setState(72);
-						match(MINUS);
-						setState(73);
-						((WyrazenieodejmowaniaContext)_localctx).prawa = wyrazenie(10);
-						}
-						break;
-					case 3:
-						{
-						_localctx = new WyrazeniemnozeniaContext(new WyrazenieContext(_parentctx, _parentState));
-						((WyrazeniemnozeniaContext)_localctx).lewa = _prevctx;
-						pushNewRecursionContext(_localctx, _startState, RULE_wyrazenie);
-						setState(74);
-						if (!(precpred(_ctx, 8))) throw new FailedPredicateException(this, "precpred(_ctx, 8)");
-						setState(75);
-						match(MNOZENIE);
-						setState(76);
-						((WyrazeniemnozeniaContext)_localctx).prawa = wyrazenie(9);
-						}
-						break;
-					case 4:
-						{
-						_localctx = new WyrazeniedzieleniaContext(new WyrazenieContext(_parentctx, _parentState));
-						((WyrazeniedzieleniaContext)_localctx).lewa = _prevctx;
-						pushNewRecursionContext(_localctx, _startState, RULE_wyrazenie);
-						setState(77);
-						if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
-						setState(78);
-						match(DZIELENIE);
-						setState(79);
-						((WyrazeniedzieleniaContext)_localctx).prawa = wyrazenie(8);
-						}
-						break;
-					case 5:
-						{
-						_localctx = new WyrazeniepotegowaniaContext(new WyrazenieContext(_parentctx, _parentState));
-						((WyrazeniepotegowaniaContext)_localctx).lewa = _prevctx;
-						pushNewRecursionContext(_localctx, _startState, RULE_wyrazenie);
-						setState(80);
-						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
-						setState(81);
-						match(POTEGOWANIE);
-						setState(82);
-						((WyrazeniepotegowaniaContext)_localctx).prawa = wyrazenie(7);
-						}
-						break;
-					case 6:
-						{
-						_localctx = new WyrazeniezwiekszenieContext(new WyrazenieContext(_parentctx, _parentState));
-						((WyrazeniezwiekszenieContext)_localctx).lewa = _prevctx;
-						pushNewRecursionContext(_localctx, _startState, RULE_wyrazenie);
-						setState(83);
-						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
-						setState(84);
-						match(ZWIEKSZENIE);
-						}
-						break;
-					case 7:
-						{
 						_localctx = new WyrazeniezmniejszenieContext(new WyrazenieContext(_parentctx, _parentState));
 						((WyrazeniezmniejszenieContext)_localctx).lewa = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_wyrazenie);
-						setState(85);
+						setState(77);
 						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
-						setState(86);
+						setState(78);
 						match(ZMNIEJSZENIE);
 						}
 						break;
 					}
 					} 
 				}
-				setState(91);
+				setState(83);
 				_errHandler.sync(this);
 				_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
 			}
@@ -937,11 +811,11 @@ public class ShadowParser extends Parser {
 
 	public final Zapytanie_jesliContext zapytanie_jesli() throws RecognitionException {
 		Zapytanie_jesliContext _localctx = new Zapytanie_jesliContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_zapytanie_jesli);
+		enterRule(_localctx, 14, RULE_zapytanie_jesli);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(92);
+			setState(84);
 			match(JESLI);
 			}
 		}
@@ -979,11 +853,11 @@ public class ShadowParser extends Parser {
 
 	public final Petla_dopokiContext petla_dopoki() throws RecognitionException {
 		Petla_dopokiContext _localctx = new Petla_dopokiContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_petla_dopoki);
+		enterRule(_localctx, 16, RULE_petla_dopoki);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(94);
+			setState(86);
 			match(DOPOKI);
 			}
 		}
@@ -1021,11 +895,11 @@ public class ShadowParser extends Parser {
 
 	public final Petla_dlaContext petla_dla() throws RecognitionException {
 		Petla_dlaContext _localctx = new Petla_dlaContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_petla_dla);
+		enterRule(_localctx, 18, RULE_petla_dla);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(96);
+			setState(88);
 			match(DLA);
 			}
 		}
@@ -1075,34 +949,34 @@ public class ShadowParser extends Parser {
 
 	public final Deklaracja_funkcjiContext deklaracja_funkcji() throws RecognitionException {
 		Deklaracja_funkcjiContext _localctx = new Deklaracja_funkcjiContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_deklaracja_funkcji);
+		enterRule(_localctx, 20, RULE_deklaracja_funkcji);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(98);
+			setState(90);
 			match(FUNKCJA);
-			setState(99);
+			setState(91);
 			wyrazenie(0);
-			setState(100);
+			setState(92);
 			match(PRZYPISANIE);
-			setState(101);
+			setState(93);
 			match(LNAWIAS);
-			setState(105);
+			setState(97);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << STALA) | (1L << ZMIENNA) | (1L << DLA) | (1L << JESLI) | (1L << DOPOKI) | (1L << FUNKCJA) | (1L << LNAWIAS) | (1L << ZNAKI))) != 0)) {
 				{
 				{
-				setState(102);
+				setState(94);
 				komunikat();
 				}
 				}
-				setState(107);
+				setState(99);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(108);
+			setState(100);
 			match(PNAWIAS);
 			}
 		}
@@ -1148,32 +1022,32 @@ public class ShadowParser extends Parser {
 
 	public final Wywolanie_funkcjiContext wywolanie_funkcji() throws RecognitionException {
 		Wywolanie_funkcjiContext _localctx = new Wywolanie_funkcjiContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_wywolanie_funkcji);
+		enterRule(_localctx, 22, RULE_wywolanie_funkcji);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(110);
+			setState(102);
 			match(FUNKCJA);
-			setState(111);
+			setState(103);
 			wyrazenie(0);
-			setState(112);
+			setState(104);
 			match(LNAWIAS);
-			setState(116);
+			setState(108);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << FUNKCJA) | (1L << LNAWIAS) | (1L << ZNAKI))) != 0)) {
 				{
 				{
-				setState(113);
+				setState(105);
 				wyrazenie(0);
 				}
 				}
-				setState(118);
+				setState(110);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(119);
+			setState(111);
 			match(PNAWIAS);
 			}
 		}
@@ -1213,15 +1087,15 @@ public class ShadowParser extends Parser {
 
 	public final LewynawContext lewynaw() throws RecognitionException {
 		LewynawContext _localctx = new LewynawContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_lewynaw);
+		enterRule(_localctx, 24, RULE_lewynaw);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(121);
+			setState(113);
 			match(LNAWIAS);
-			setState(122);
+			setState(114);
 			match(LKWADRAT);
-			setState(123);
+			setState(115);
 			match(LKLAMROWY);
 			}
 		}
@@ -1261,15 +1135,15 @@ public class ShadowParser extends Parser {
 
 	public final PrawynawContext prawynaw() throws RecognitionException {
 		PrawynawContext _localctx = new PrawynawContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_prawynaw);
+		enterRule(_localctx, 26, RULE_prawynaw);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(125);
+			setState(117);
 			match(PNAWIAS);
-			setState(126);
+			setState(118);
 			match(PKLAMROWY);
-			setState(127);
+			setState(119);
 			match(PKWADRAT);
 			}
 		}
@@ -1286,7 +1160,7 @@ public class ShadowParser extends Parser {
 
 	public boolean sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch (ruleIndex) {
-		case 5:
+		case 6:
 			return wyrazenie_sempred((WyrazenieContext)_localctx, predIndex);
 		}
 		return true;
@@ -1294,56 +1168,44 @@ public class ShadowParser extends Parser {
 	private boolean wyrazenie_sempred(WyrazenieContext _localctx, int predIndex) {
 		switch (predIndex) {
 		case 0:
-			return precpred(_ctx, 10);
-		case 1:
-			return precpred(_ctx, 9);
-		case 2:
-			return precpred(_ctx, 8);
-		case 3:
-			return precpred(_ctx, 7);
-		case 4:
-			return precpred(_ctx, 6);
-		case 5:
 			return precpred(_ctx, 5);
-		case 6:
+		case 1:
 			return precpred(_ctx, 4);
 		}
 		return true;
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\62\u0084\4\2\t\2"+
-		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
-		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\3\2\3\2\3\2\7\2 \n\2\f\2\16\2#\13\2\3"+
-		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3.\n\3\3\4\3\4\3\4\3\4\3\4\3\5\3"+
-		"\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7E\n\7\3"+
-		"\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7"+
-		"\3\7\7\7Z\n\7\f\7\16\7]\13\7\3\b\3\b\3\t\3\t\3\n\3\n\3\13\3\13\3\13\3"+
-		"\13\3\13\7\13j\n\13\f\13\16\13m\13\13\3\13\3\13\3\f\3\f\3\f\3\f\7\fu\n"+
-		"\f\f\f\16\fx\13\f\3\f\3\f\3\r\3\r\3\r\3\r\3\16\3\16\3\16\3\16\3\16\2\3"+
-		"\f\17\2\4\6\b\n\f\16\20\22\24\26\30\32\2\2\2\u008a\2!\3\2\2\2\4-\3\2\2"+
-		"\2\6/\3\2\2\2\b\64\3\2\2\2\n9\3\2\2\2\fD\3\2\2\2\16^\3\2\2\2\20`\3\2\2"+
-		"\2\22b\3\2\2\2\24d\3\2\2\2\26p\3\2\2\2\30{\3\2\2\2\32\177\3\2\2\2\34\35"+
-		"\5\4\3\2\35\36\7\25\2\2\36 \3\2\2\2\37\34\3\2\2\2 #\3\2\2\2!\37\3\2\2"+
-		"\2!\"\3\2\2\2\"\3\3\2\2\2#!\3\2\2\2$.\5\f\7\2%.\5\6\4\2&.\5\b\5\2\'.\5"+
-		"\n\6\2(.\5\16\b\2).\5\20\t\2*.\5\22\n\2+.\5\24\13\2,.\5\26\f\2-$\3\2\2"+
-		"\2-%\3\2\2\2-&\3\2\2\2-\'\3\2\2\2-(\3\2\2\2-)\3\2\2\2-*\3\2\2\2-+\3\2"+
-		"\2\2-,\3\2\2\2.\5\3\2\2\2/\60\7\3\2\2\60\61\5\f\7\2\61\62\7\30\2\2\62"+
-		"\63\5\f\7\2\63\7\3\2\2\2\64\65\7\4\2\2\65\66\5\f\7\2\66\67\7\30\2\2\67"+
-		"8\5\f\7\28\t\3\2\2\29:\5\f\7\2:;\7\30\2\2;<\5\f\7\2<\13\3\2\2\2=>\b\7"+
-		"\1\2>?\5\30\r\2?@\5\f\7\2@A\5\32\16\2AE\3\2\2\2BE\5\26\f\2CE\7.\2\2D="+
-		"\3\2\2\2DB\3\2\2\2DC\3\2\2\2E[\3\2\2\2FG\f\f\2\2GH\7$\2\2HZ\5\f\7\rIJ"+
-		"\f\13\2\2JK\7%\2\2KZ\5\f\7\fLM\f\n\2\2MN\7&\2\2NZ\5\f\7\13OP\f\t\2\2P"+
-		"Q\7\'\2\2QZ\5\f\7\nRS\f\b\2\2ST\7(\2\2TZ\5\f\7\tUV\f\7\2\2VZ\7\"\2\2W"+
-		"X\f\6\2\2XZ\7#\2\2YF\3\2\2\2YI\3\2\2\2YL\3\2\2\2YO\3\2\2\2YR\3\2\2\2Y"+
-		"U\3\2\2\2YW\3\2\2\2Z]\3\2\2\2[Y\3\2\2\2[\\\3\2\2\2\\\r\3\2\2\2][\3\2\2"+
-		"\2^_\7\7\2\2_\17\3\2\2\2`a\7\n\2\2a\21\3\2\2\2bc\7\6\2\2c\23\3\2\2\2d"+
-		"e\7\13\2\2ef\5\f\7\2fg\7\30\2\2gk\7\16\2\2hj\5\4\3\2ih\3\2\2\2jm\3\2\2"+
-		"\2ki\3\2\2\2kl\3\2\2\2ln\3\2\2\2mk\3\2\2\2no\7\17\2\2o\25\3\2\2\2pq\7"+
-		"\13\2\2qr\5\f\7\2rv\7\16\2\2su\5\f\7\2ts\3\2\2\2ux\3\2\2\2vt\3\2\2\2v"+
-		"w\3\2\2\2wy\3\2\2\2xv\3\2\2\2yz\7\17\2\2z\27\3\2\2\2{|\7\16\2\2|}\7\22"+
-		"\2\2}~\7\20\2\2~\31\3\2\2\2\177\u0080\7\17\2\2\u0080\u0081\7\21\2\2\u0081"+
-		"\u0082\7\23\2\2\u0082\33\3\2\2\2\t!-DY[kv";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3.|\4\2\t\2\4\3\t\3"+
+		"\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f"+
+		"\t\f\4\r\t\r\4\16\t\16\4\17\t\17\3\2\3\2\3\2\7\2\"\n\2\f\2\16\2%\13\2"+
+		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3\61\n\3\3\4\3\4\3\4\3\4\3"+
+		"\5\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\7\3\b\3\b\3\b\3\b"+
+		"\3\b\3\b\3\b\5\bL\n\b\3\b\3\b\3\b\3\b\7\bR\n\b\f\b\16\bU\13\b\3\t\3\t"+
+		"\3\n\3\n\3\13\3\13\3\f\3\f\3\f\3\f\3\f\7\fb\n\f\f\f\16\fe\13\f\3\f\3\f"+
+		"\3\r\3\r\3\r\3\r\7\rm\n\r\f\r\16\rp\13\r\3\r\3\r\3\16\3\16\3\16\3\16\3"+
+		"\17\3\17\3\17\3\17\3\17\2\3\16\20\2\4\6\b\n\f\16\20\22\24\26\30\32\34"+
+		"\2\2\2}\2#\3\2\2\2\4\60\3\2\2\2\6\62\3\2\2\2\b\66\3\2\2\2\n;\3\2\2\2\f"+
+		"@\3\2\2\2\16K\3\2\2\2\20V\3\2\2\2\22X\3\2\2\2\24Z\3\2\2\2\26\\\3\2\2\2"+
+		"\30h\3\2\2\2\32s\3\2\2\2\34w\3\2\2\2\36\37\5\4\3\2\37 \7\25\2\2 \"\3\2"+
+		"\2\2!\36\3\2\2\2\"%\3\2\2\2#!\3\2\2\2#$\3\2\2\2$\3\3\2\2\2%#\3\2\2\2&"+
+		"\61\5\16\b\2\'\61\5\b\5\2(\61\5\n\6\2)\61\5\f\7\2*\61\5\20\t\2+\61\5\22"+
+		"\n\2,\61\5\24\13\2-\61\5\26\f\2.\61\5\30\r\2/\61\5\6\4\2\60&\3\2\2\2\60"+
+		"\'\3\2\2\2\60(\3\2\2\2\60)\3\2\2\2\60*\3\2\2\2\60+\3\2\2\2\60,\3\2\2\2"+
+		"\60-\3\2\2\2\60.\3\2\2\2\60/\3\2\2\2\61\5\3\2\2\2\62\63\5\16\b\2\63\64"+
+		"\7$\2\2\64\65\5\16\b\2\65\7\3\2\2\2\66\67\7\3\2\2\678\5\16\b\289\7\30"+
+		"\2\29:\5\16\b\2:\t\3\2\2\2;<\7\4\2\2<=\5\16\b\2=>\7\30\2\2>?\5\16\b\2"+
+		"?\13\3\2\2\2@A\5\16\b\2AB\7\30\2\2BC\5\16\b\2C\r\3\2\2\2DE\b\b\1\2EF\5"+
+		"\32\16\2FG\5\16\b\2GH\5\34\17\2HL\3\2\2\2IL\5\30\r\2JL\7*\2\2KD\3\2\2"+
+		"\2KI\3\2\2\2KJ\3\2\2\2LS\3\2\2\2MN\f\7\2\2NR\7\"\2\2OP\f\6\2\2PR\7#\2"+
+		"\2QM\3\2\2\2QO\3\2\2\2RU\3\2\2\2SQ\3\2\2\2ST\3\2\2\2T\17\3\2\2\2US\3\2"+
+		"\2\2VW\7\7\2\2W\21\3\2\2\2XY\7\n\2\2Y\23\3\2\2\2Z[\7\6\2\2[\25\3\2\2\2"+
+		"\\]\7\13\2\2]^\5\16\b\2^_\7\30\2\2_c\7\16\2\2`b\5\4\3\2a`\3\2\2\2be\3"+
+		"\2\2\2ca\3\2\2\2cd\3\2\2\2df\3\2\2\2ec\3\2\2\2fg\7\17\2\2g\27\3\2\2\2"+
+		"hi\7\13\2\2ij\5\16\b\2jn\7\16\2\2km\5\16\b\2lk\3\2\2\2mp\3\2\2\2nl\3\2"+
+		"\2\2no\3\2\2\2oq\3\2\2\2pn\3\2\2\2qr\7\17\2\2r\31\3\2\2\2st\7\16\2\2t"+
+		"u\7\22\2\2uv\7\20\2\2v\33\3\2\2\2wx\7\17\2\2xy\7\21\2\2yz\7\23\2\2z\35"+
+		"\3\2\2\2\t#\60KQScn";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

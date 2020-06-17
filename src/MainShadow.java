@@ -1,5 +1,10 @@
 import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.*;
+import org.antlr.v4.runtime.tree.TerminalNode;
+import org.antlr.v4.runtime.Token;
+
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,7 +22,7 @@ public class MainShadow extends ShadowBaseVisitor <Object> {
         ShadowLexer ShadowLexer = new ShadowLexer(charStream);
         CommonTokenStream commonTokenStream = new CommonTokenStream(ShadowLexer);
         ShadowParser ShadowParser = new ShadowParser(commonTokenStream);
-
+        ParseTree context = ShadowParser.program();
         ShadowParser.ProgramContext programContext = ShadowParser.program();
         ShadowBaseVisitor visitor = new ShadowBaseVisitor() {
             @Override
@@ -29,7 +34,7 @@ public class MainShadow extends ShadowBaseVisitor <Object> {
 
             @Override
             public Object visitKomunikat(ShadowParser.KomunikatContext ctx) {
-                visit(ctx);
+                //visit(ctx);
                 System.out.println("komunikat");
                 return visitChildren(ctx);
             }
@@ -64,27 +69,11 @@ public class MainShadow extends ShadowBaseVisitor <Object> {
                 return visitChildren(ctx);
             }
 
-            @Override
-            public Object visitWyrazeniepotegowania(ShadowParser.WyrazeniepotegowaniaContext ctx) {
-                System.out.println("wyrazeniepotegowania");
-                return visitChildren(ctx);
-            }
 
-            @Override
-            public Object visitWyrazeniedzielenia(ShadowParser.WyrazeniedzieleniaContext ctx) {
-                System.out.println("wyrazeniedzielenia");
-                return visitChildren(ctx);
-            }
 
             @Override
             public Object visitWyrazeniefunkcja(ShadowParser.WyrazeniefunkcjaContext ctx) {
                 System.out.println("wyrazeniefunkcja");
-                return visitChildren(ctx);
-            }
-
-            @Override
-            public Object visitWyrazeniedodawania(ShadowParser.WyrazeniedodawaniaContext ctx) {
-                System.out.println("wyrazeniedodawania");
                 return visitChildren(ctx);
             }
 
@@ -95,22 +84,11 @@ public class MainShadow extends ShadowBaseVisitor <Object> {
             }
 
             @Override
-            public Object visitWyrazeniemnozenia(ShadowParser.WyrazeniemnozeniaContext ctx) {
-                System.out.println("wyrazeniemnozenia");
-                return visitChildren(ctx);
-            }
-
-            @Override
             public Object visitWyrazenieznakowe(ShadowParser.WyrazenieznakoweContext ctx) {
                 System.out.println("wyrazenieznakowe");
                 return visitChildren(ctx);
             }
 
-            @Override
-            public Object visitWyrazenieodejmowania(ShadowParser.WyrazenieodejmowaniaContext ctx) {
-                System.out.println("wyrazenieodejmowania");
-                return visitChildren(ctx);
-            }
 
             @Override
             public Object visitZapytanie_jesli(ShadowParser.Zapytanie_jesliContext ctx) {
@@ -143,28 +121,48 @@ public class MainShadow extends ShadowBaseVisitor <Object> {
             }
 
             @Override
-            public Object visitLewynaw(ShadowParser.LewynawContext ctx) {
-                System.out.println("lewynaw");
-                return visitChildren(ctx);
-            }
-
-            @Override
-            public Object visitPrawynaw(ShadowParser.PrawynawContext ctx) {
-                System.out.println("prawynaw");
-                return visitChildren(ctx);
+            public Object visitDzialanie_matematyczne(ShadowParser.Dzialanie_matematyczneContext ctx) {
+                double lewa = Double.parseDouble(ctx.lewa.toString());
+                double prawa = Double.parseDouble(ctx.prawa.toString());
+                switch(ctx.ZNAK_MATEMATYCZNY().toString())
+                {
+                    case "+":
+                        System.out.println("Dodawanie " + lewa + " + " + prawa + "= " + (lewa+prawa));
+                        break;
+                    case "-":
+                        System.out.println("Odejmowanie " + lewa + " + " + prawa + "= " + (lewa-prawa));
+                        break;
+                    case "/":
+                        System.out.println("Dzielenie " + lewa + " + " + prawa + "= " + (lewa/prawa));
+                        break;
+                    case "*":
+                        System.out.println("Mnozenie " + lewa + " + " + prawa + "= " + (lewa*prawa));
+                        break;
+                    case "^":
+                        System.out.println("Potegowanie " + lewa + " + " + prawa + "= " + (Math.pow(lewa,prawa)));
+                        break;
+                }
+                return super.visitDzialanie_matematyczne(ctx);
             }
 
 
             @Override
             public Object visit(ParseTree parseTree) {
+                System.out.println("parseTreeStart");
                 //visitProgram(programContext);
-                /*for (int i =0; i<parseTree.getChildCount(); i++) {
+                for (int i =0; i<parseTree.getChildCount(); i++) {
                     if (!(parseTree.getChild(i).toString()).equalsIgnoreCase(";")) {
-                        System.out.println(parseTree.getChild(i).toString());
+
+                        //System.out.println(visit(parseTree.getChild(i)).getClass());
+                        System.out.println(parseTree.getChild(i).getText());
+                        visit(parseTree.getChild(i));
+                        //System.out.println(parseTree.getChild(i).toString());
+                        //System.out.println(parseTree.getChild(i).toStringTree());
+                        //visitChildren((RuleNode) parseTree.getChild(i));
+                        ;
                     }
-                    visitChildren((RuleNode) parseTree);
                     System.out.println("!");
-                }*/
+                }
                 //System.out.println(parseTree.getChild(0).getText());
                 //parseTree.getChildCount();
                 //parseTree.getChild(0).getText();
@@ -177,27 +175,37 @@ public class MainShadow extends ShadowBaseVisitor <Object> {
                 //}
 
                 //System.out.println(parseTree.getText());
-                return visitChildren((RuleNode) parseTree);
+                System.out.println("parseTreeEnd");
+                return null;
             }
 
             @Override
             public Object visitChildren(RuleNode ruleNode) {
+                System.out.println("visitChildrenStart");
 
-                for (int i =0; i<ruleNode.getChildCount(); i++) {
-                    if (!(ruleNode.getChild(i).toString()).equalsIgnoreCase(";")) {
-                        //System.out.println(ruleNode.getChild(i).toString());
-                    }
-                    visit(ruleNode.getChild(i));
-                    System.out.println("!");
+                System.out.println(ruleNode.getText());
+                    visit(ruleNode);
+                    //System.out.println(ruleNode.getRuleContext().getText());
+                    //System.out.println(ruleNode.getRuleContext().getChild(0).toString());
+                    //System.out.println(ruleNode.getRuleContext().getChild(1).getText());
+                    //for (int i =0; i<ruleNode.getChildCount(); i++) {
+                    //   if (!(ruleNode.getChild(i).toString()).equalsIgnoreCase(";")) {
+                    //       //System.out.println(ruleNode.getChild(i).toString());
+                    //    }
+                    //     visitProgram(programContext.(ruleNode.getChild(i)));
+                    //     System.out.println("!");
+                    // }
+
+
+                    //visit(ruleNode.getChild(0));
+                    System.out.println("visitChildrenEnd");
+                    return ruleNode.getText();
                 }
 
 
-                //visit(ruleNode.getChild(0));
-                return ruleNode.getText();
-            }
-
             @Override
             public Object visitTerminal(TerminalNode terminalNode) {
+
                 System.out.println("terminal");
                 return null;
             }
@@ -208,7 +216,7 @@ public class MainShadow extends ShadowBaseVisitor <Object> {
                 return null;
             }
         };
-        visitor.visit(programContext);
+        visitor.visit(context);
         System.out.println("???");
         //System.out.println(visitor.visit(programContext));
         System.out.println("???");

@@ -27,6 +27,16 @@ public interface ShadowListener extends ParseTreeListener {
 	 */
 	void exitKomunikat(ShadowParser.KomunikatContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link ShadowParser#dzialanie_matematyczne}.
+	 * @param ctx the parse tree
+	 */
+	void enterDzialanie_matematyczne(ShadowParser.Dzialanie_matematyczneContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ShadowParser#dzialanie_matematyczne}.
+	 * @param ctx the parse tree
+	 */
+	void exitDzialanie_matematyczne(ShadowParser.Dzialanie_matematyczneContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code utworzeniestalej}
 	 * labeled alternative in {@link ShadowParser#utworzenie_stalej}.
 	 * @param ctx the parse tree
@@ -87,30 +97,6 @@ public interface ShadowListener extends ParseTreeListener {
 	 */
 	void exitWyrazeniezmniejszenie(ShadowParser.WyrazeniezmniejszenieContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code wyrazeniepotegowania}
-	 * labeled alternative in {@link ShadowParser#wyrazenie}.
-	 * @param ctx the parse tree
-	 */
-	void enterWyrazeniepotegowania(ShadowParser.WyrazeniepotegowaniaContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code wyrazeniepotegowania}
-	 * labeled alternative in {@link ShadowParser#wyrazenie}.
-	 * @param ctx the parse tree
-	 */
-	void exitWyrazeniepotegowania(ShadowParser.WyrazeniepotegowaniaContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code wyrazeniedzielenia}
-	 * labeled alternative in {@link ShadowParser#wyrazenie}.
-	 * @param ctx the parse tree
-	 */
-	void enterWyrazeniedzielenia(ShadowParser.WyrazeniedzieleniaContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code wyrazeniedzielenia}
-	 * labeled alternative in {@link ShadowParser#wyrazenie}.
-	 * @param ctx the parse tree
-	 */
-	void exitWyrazeniedzielenia(ShadowParser.WyrazeniedzieleniaContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code wyrazeniefunkcja}
 	 * labeled alternative in {@link ShadowParser#wyrazenie}.
 	 * @param ctx the parse tree
@@ -122,18 +108,6 @@ public interface ShadowListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitWyrazeniefunkcja(ShadowParser.WyrazeniefunkcjaContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code wyrazeniedodawania}
-	 * labeled alternative in {@link ShadowParser#wyrazenie}.
-	 * @param ctx the parse tree
-	 */
-	void enterWyrazeniedodawania(ShadowParser.WyrazeniedodawaniaContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code wyrazeniedodawania}
-	 * labeled alternative in {@link ShadowParser#wyrazenie}.
-	 * @param ctx the parse tree
-	 */
-	void exitWyrazeniedodawania(ShadowParser.WyrazeniedodawaniaContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code wyrazenienawias}
 	 * labeled alternative in {@link ShadowParser#wyrazenie}.
@@ -147,18 +121,6 @@ public interface ShadowListener extends ParseTreeListener {
 	 */
 	void exitWyrazenienawias(ShadowParser.WyrazenienawiasContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code wyrazeniemnozenia}
-	 * labeled alternative in {@link ShadowParser#wyrazenie}.
-	 * @param ctx the parse tree
-	 */
-	void enterWyrazeniemnozenia(ShadowParser.WyrazeniemnozeniaContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code wyrazeniemnozenia}
-	 * labeled alternative in {@link ShadowParser#wyrazenie}.
-	 * @param ctx the parse tree
-	 */
-	void exitWyrazeniemnozenia(ShadowParser.WyrazeniemnozeniaContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code wyrazenieznakowe}
 	 * labeled alternative in {@link ShadowParser#wyrazenie}.
 	 * @param ctx the parse tree
@@ -170,18 +132,6 @@ public interface ShadowListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitWyrazenieznakowe(ShadowParser.WyrazenieznakoweContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code wyrazenieodejmowania}
-	 * labeled alternative in {@link ShadowParser#wyrazenie}.
-	 * @param ctx the parse tree
-	 */
-	void enterWyrazenieodejmowania(ShadowParser.WyrazenieodejmowaniaContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code wyrazenieodejmowania}
-	 * labeled alternative in {@link ShadowParser#wyrazenie}.
-	 * @param ctx the parse tree
-	 */
-	void exitWyrazenieodejmowania(ShadowParser.WyrazenieodejmowaniaContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ShadowParser#zapytanie_jesli}.
 	 * @param ctx the parse tree

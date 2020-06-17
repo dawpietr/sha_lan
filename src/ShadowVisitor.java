@@ -22,6 +22,12 @@ public interface ShadowVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitKomunikat(ShadowParser.KomunikatContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link ShadowParser#dzialanie_matematyczne}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDzialanie_matematyczne(ShadowParser.Dzialanie_matematyczneContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code utworzeniestalej}
 	 * labeled alternative in {@link ShadowParser#utworzenie_stalej}.
 	 * @param ctx the parse tree
@@ -57,33 +63,12 @@ public interface ShadowVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitWyrazeniezmniejszenie(ShadowParser.WyrazeniezmniejszenieContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code wyrazeniepotegowania}
-	 * labeled alternative in {@link ShadowParser#wyrazenie}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitWyrazeniepotegowania(ShadowParser.WyrazeniepotegowaniaContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code wyrazeniedzielenia}
-	 * labeled alternative in {@link ShadowParser#wyrazenie}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitWyrazeniedzielenia(ShadowParser.WyrazeniedzieleniaContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code wyrazeniefunkcja}
 	 * labeled alternative in {@link ShadowParser#wyrazenie}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitWyrazeniefunkcja(ShadowParser.WyrazeniefunkcjaContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code wyrazeniedodawania}
-	 * labeled alternative in {@link ShadowParser#wyrazenie}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitWyrazeniedodawania(ShadowParser.WyrazeniedodawaniaContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code wyrazenienawias}
 	 * labeled alternative in {@link ShadowParser#wyrazenie}.
@@ -92,26 +77,12 @@ public interface ShadowVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitWyrazenienawias(ShadowParser.WyrazenienawiasContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code wyrazeniemnozenia}
-	 * labeled alternative in {@link ShadowParser#wyrazenie}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitWyrazeniemnozenia(ShadowParser.WyrazeniemnozeniaContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code wyrazenieznakowe}
 	 * labeled alternative in {@link ShadowParser#wyrazenie}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitWyrazenieznakowe(ShadowParser.WyrazenieznakoweContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code wyrazenieodejmowania}
-	 * labeled alternative in {@link ShadowParser#wyrazenie}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitWyrazenieodejmowania(ShadowParser.WyrazenieodejmowaniaContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link ShadowParser#zapytanie_jesli}.
 	 * @param ctx the parse tree
