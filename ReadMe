@@ -123,3 +123,15 @@ wypiszacotutajsiedzieje?,"".!
 Nastepuje zamkniecie aplikacji!
 
 Process finished with exit code 0
+
+Źródła i poprzednie wersje projektu:
+https://github.com/dawpietr/sjik
+https://github.com/dawpietr/sha_lan-old
+https://stackoverflow.com/questions/6487593/what-does-fragment-mean-in-antlr
+https://craftinginterpreters.com/statements-and-state.html
+https://craftinginterpreters.com/local-variables.html
+https://ruslanspivak.com/lsbasi-part4/
+https://www.baeldung.com/java-antlr
+https://jakubdziworski.github.io/java/2016/04/01/antlr_visitor_vs_listener.html
+
+
