@@ -1,8 +1,67 @@
-wygenerowanie gramatyki
+SHA-LAN
 
-java -jar ./lib/antlr-4.8-complete.jar -no-visitor -no-listener ./Shadow.g4 -o ./src
+Kod używanmy do generowania gramatyki uruchamiany w folderze z projektem:
+java -jar ./lib/antlr-4.8-complete.jar -no-visitor -listener ./Shadow.g4 -o ./src
+UWAGA, uruchomienie go na aktualnej wersji powoduje wygenerowanie nowego pliku ShadowBaseListener i niszczy całyt projekt, przed wywołaniem wykonać kopię tego pliku.
+
+Opis języka
+Shadow to prosty język utworzony w oparciu o Javę w zamyśle miał upraszczać przedstawienie i sposób działania interpretera dla dzieci (dlatego w większości zostął wykorzystany język polski)
+
+Aktualne możliwości:
+-Proste działania matematyczne (jedynie na dwóch zmiennych/liczbach/stałych)
+-Tworzenie osobnych zmiennych i stałych
+-Wypisywanie zmiennych,ciągów znaków
+-Funkcja komentarza zarówno przez pojedyńczą linię (//) jak i wiele z nich (/* */)
+-Wymuszenie zakończenia progrmau w którymkolwiek momencie komendą EXIT;
+
+Język posiada ogromne możliwości rozwoju
+
+Każda linia kończy się średnikiem jako oddzielenie kolejnych części programu (komunikatów).
+Zmienne i stałe są zapisywane do dwóch osobnych list, można to łatwo rozwiązać poprzez dodanie do konstruktora zmiennej "stala" określającej czy dana jest stała czy zmienna, natomiast odnoszę wrażenie, że jest to ciekawa indywidualność z jaką się jeszcze nie spotkałem.
+Wszystkie zmienne zapisywane są jako string i w momencie próby wykonania na nich dziłań są parsowane do double.
+
+Komenda zakończenia programu w jakimkolwiek jego momencie:
+EXIT;
+
+Wyświetla:
+Nastepuje zamkniecie aplikacji!
+
+Komenda wypisania zawartości umieszcczonej po wypisz aż do średnika (chyba że wystąpią niedozwolone znaki)
+wypisz cokolwiekzostaniezapisanepo"wypisz"zostanie wypisane na ekranie;
+
+Wyświetla:
+cokolwiekzostaniezapisanepo"wypisz"zostaniewypisanenaekranie
+
+Komenda utworzenia stalej o określonej nazwie i wartości, stałej nie da się później zmienić, raz przypisana nie zmienia wartości
+stala a = 12;
+
+Wyświetla:
+Utworzono stala a zawierajaca: 12
+
+Komenda utworzenia zmiennej o określonej nazwie i wartości, zmienną można dowolnie modyfikować w trakcie działania programu
+zmienna b = 13;
+
+Wyświetla:
+Utworzono zmienna b zawierajaca: 13
+
+Komenda zmiany wartosci zmiennej, ograniczona jak sama nazwa wskazuje do zmiennych, pozwala nadać jakiekolwiek wartosci liczbowe i literowe
+b = 15;
+
+Wyświetla:
+W zmiennej b zostala zmieniona wartosc na: 15.0
+
+Komenda działania matematycznego, obsługuje podstawowe działania jak dodawanie odejmowanie mnożenie dzielenie i potęgowanie 
+ale tylko dwóch elementów którymi mogą być zarówno cyfry jak i zmienne/stałe
+a+b;
+
+WYświetla:
+Dodawanie 12.0 + 15.0= 28.0
 
 
+
+
+Przykład kodu:
+kod wykonywany:
 1+2;
 2-5;
 2*3;
@@ -32,7 +91,7 @@ przez komentarz*/
 //pominiecie pojedynczej linii tekstu jako komentarz
 EXIT;
 
-
+Wynik wykonania powyzszego kodu (każdy linia opisuje swój wynik i działanie):
 Dodawanie 1.0 + 2.0= 3.0
 Odejmowanie 2.0 - 5.0= -3.0
 Mnozenie 2.0 * 3.0= 6.0
