@@ -78,8 +78,13 @@ public class ShadowBaseListener implements ShadowListener {
 			System.out.println("Zmienna " + Pamiec.zmienne.get((Pamiec.czyIstniejeZmienne(wyraz))).nazwa + " = " + Pamiec.zmienne.get((Pamiec.czyIstniejeZmienne(wyraz))).wartosc);
 		if (!(Pamiec.czyIstniejeStala(wyraz) == -1))
 			System.out.println("Stala " + Pamiec.stala.get((Pamiec.czyIstniejeStala(wyraz))).nazwa + " = " + Pamiec.stala.get((Pamiec.czyIstniejeStala(wyraz))).wartosc);
-		if ((Pamiec.czyIstniejeZmienne(wyraz) == -1) && (Pamiec.czyIstniejeStala(wyraz) == -1))
-			System.out.println(ctx.lewa.getText());
+		if ((Pamiec.czyIstniejeZmienne(wyraz) == -1) && (Pamiec.czyIstniejeStala(wyraz) == -1)){
+			String wypisz = "";
+			for (int g = 0; g < ctx.getChildCount(); g++) {
+				wypisz += ctx.getChild(g).getText();
+			}
+			System.out.println(wypisz);
+		}
 	}
 
 	/**
