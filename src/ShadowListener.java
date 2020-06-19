@@ -27,15 +27,25 @@ public interface ShadowListener extends ParseTreeListener {
 	 */
 	void exitKomunikat(ShadowParser.KomunikatContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ShadowParser#dzialanie_matematyczne}.
+	 * Enter a parse tree produced by {@link ShadowParser#exit}.
 	 * @param ctx the parse tree
 	 */
-	void enterDzialanie_matematyczne(ShadowParser.Dzialanie_matematyczneContext ctx);
+	void enterExit(ShadowParser.ExitContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ShadowParser#dzialanie_matematyczne}.
+	 * Exit a parse tree produced by {@link ShadowParser#exit}.
 	 * @param ctx the parse tree
 	 */
-	void exitDzialanie_matematyczne(ShadowParser.Dzialanie_matematyczneContext ctx);
+	void exitExit(ShadowParser.ExitContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link ShadowParser#wypisz}.
+	 * @param ctx the parse tree
+	 */
+	void enterWypisz(ShadowParser.WypiszContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ShadowParser#wypisz}.
+	 * @param ctx the parse tree
+	 */
+	void exitWypisz(ShadowParser.WypiszContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code utworzeniestalej}
 	 * labeled alternative in {@link ShadowParser#utworzenie_stalej}.
@@ -73,6 +83,18 @@ public interface ShadowListener extends ParseTreeListener {
 	 */
 	void exitZmianazmiennej(ShadowParser.ZmianazmiennejContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code wyrazeniematematyczne}
+	 * labeled alternative in {@link ShadowParser#wyrazenie}.
+	 * @param ctx the parse tree
+	 */
+	void enterWyrazeniematematyczne(ShadowParser.WyrazeniematematyczneContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code wyrazeniematematyczne}
+	 * labeled alternative in {@link ShadowParser#wyrazenie}.
+	 * @param ctx the parse tree
+	 */
+	void exitWyrazeniematematyczne(ShadowParser.WyrazeniematematyczneContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code wyrazeniezwiekszenie}
 	 * labeled alternative in {@link ShadowParser#wyrazenie}.
 	 * @param ctx the parse tree
@@ -108,6 +130,18 @@ public interface ShadowListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitWyrazeniefunkcja(ShadowParser.WyrazeniefunkcjaContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code kolejnedzialanie}
+	 * labeled alternative in {@link ShadowParser#wyrazenie}.
+	 * @param ctx the parse tree
+	 */
+	void enterKolejnedzialanie(ShadowParser.KolejnedzialanieContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code kolejnedzialanie}
+	 * labeled alternative in {@link ShadowParser#wyrazenie}.
+	 * @param ctx the parse tree
+	 */
+	void exitKolejnedzialanie(ShadowParser.KolejnedzialanieContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code wyrazenienawias}
 	 * labeled alternative in {@link ShadowParser#wyrazenie}.
@@ -182,24 +216,4 @@ public interface ShadowListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitWywolanie_funkcji(ShadowParser.Wywolanie_funkcjiContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link ShadowParser#lewynaw}.
-	 * @param ctx the parse tree
-	 */
-	void enterLewynaw(ShadowParser.LewynawContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ShadowParser#lewynaw}.
-	 * @param ctx the parse tree
-	 */
-	void exitLewynaw(ShadowParser.LewynawContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link ShadowParser#prawynaw}.
-	 * @param ctx the parse tree
-	 */
-	void enterPrawynaw(ShadowParser.PrawynawContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ShadowParser#prawynaw}.
-	 * @param ctx the parse tree
-	 */
-	void exitPrawynaw(ShadowParser.PrawynawContext ctx);
 }

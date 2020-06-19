@@ -22,12 +22,6 @@ public interface ShadowVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitKomunikat(ShadowParser.KomunikatContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link ShadowParser#dzialanie_matematyczne}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDzialanie_matematyczne(ShadowParser.Dzialanie_matematyczneContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code utworzeniestalej}
 	 * labeled alternative in {@link ShadowParser#utworzenie_stalej}.
 	 * @param ctx the parse tree
@@ -49,6 +43,13 @@ public interface ShadowVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitZmianazmiennej(ShadowParser.ZmianazmiennejContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code wyrazeniematematyczne}
+	 * labeled alternative in {@link ShadowParser#wyrazenie}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWyrazeniematematyczne(ShadowParser.WyrazeniematematyczneContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code wyrazeniezwiekszenie}
 	 * labeled alternative in {@link ShadowParser#wyrazenie}.
 	 * @param ctx the parse tree
@@ -69,6 +70,13 @@ public interface ShadowVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitWyrazeniefunkcja(ShadowParser.WyrazeniefunkcjaContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code kolejnedzialanie}
+	 * labeled alternative in {@link ShadowParser#wyrazenie}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitKolejnedzialanie(ShadowParser.KolejnedzialanieContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code wyrazenienawias}
 	 * labeled alternative in {@link ShadowParser#wyrazenie}.
@@ -113,16 +121,5 @@ public interface ShadowVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitWywolanie_funkcji(ShadowParser.Wywolanie_funkcjiContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link ShadowParser#lewynaw}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitLewynaw(ShadowParser.LewynawContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link ShadowParser#prawynaw}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitPrawynaw(ShadowParser.PrawynawContext ctx);
+
 }

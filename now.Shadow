@@ -3,7 +3,26 @@
 2*3;
 9/3;
 2^4;
-stala a = 12;
-zmienna a = 12;
+stala a = 11;
+zmienna a = 15;
 zmienna b = 13;
-b=14;
+zmienna c = zmiennaliterowa;
+a+b;
+wypisz a;
+a=14;
+wypisz a;
+wypisz b;
+wypisz c;
+wypisz ab;
+c++;
+a++;
+b--;
+c--;
+wypisz acotutajsiedzieje;
+wypisz a co tutaj sie dzieje;//pominiecie komentarza za kodem wykonywalnym
+wypisz acotutajsiedzieje?,"".!;
+/*pomijanie
+kilku lini
+przez komentarz*/
+//pominiecie pojedynczej linii tekstu jako komentarz
+EXIT;

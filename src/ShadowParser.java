@@ -16,48 +16,48 @@ public class ShadowParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		STALA=1, ZMIENNA=2, ALBO=3, DLA=4, JESLI=5, IDZ=6, ZWROC=7, DOPOKI=8, 
-		FUNKCJA=9, BOOLEAN=10, NIC=11, LNAWIAS=12, PNAWIAS=13, LKLAMROWY=14, PKLAMROWY=15, 
-		LKWADRAT=16, PKWADRAT=17, CUDZYSLOW=18, SREDNIK=19, PRZECINEK=20, KROPKA=21, 
-		PRZYPISANIE=22, WIEKSZE=23, MNIEJSZE=24, WYKRZYKNIK=25, PYTAJNIK=26, DWUKROPEK=27, 
-		POROWNANIE=28, NIEROWNE=29, I=30, LUB=31, ZWIEKSZENIE=32, ZMNIEJSZENIE=33, 
-		ZNAK_MATEMATYCZNY=34, BITI=35, BITLUB=36, MODULO=37, STRZALKA=38, PODWOJNYDWUKROPEK=39, 
-		ZNAKI=40, LICZBY=41, BIALE_ZNAKI=42, KOMENTARZ=43, LINIA_KOMENTARZA=44;
+		T__0=1, T__1=2, LEWYNAW=3, PRAWYNAW=4, STALA=5, ZMIENNA=6, ALBO=7, DLA=8, 
+		JESLI=9, IDZ=10, ZWROC=11, DOPOKI=12, FUNKCJA=13, BOOLEAN=14, NIC=15, 
+		LNAWIAS=16, PNAWIAS=17, LKLAMROWY=18, PKLAMROWY=19, LKWADRAT=20, PKWADRAT=21, 
+		CUDZYSLOW=22, SREDNIK=23, PRZECINEK=24, KROPKA=25, PRZYPISANIE=26, WIEKSZE=27, 
+		MNIEJSZE=28, WYKRZYKNIK=29, PYTAJNIK=30, DWUKROPEK=31, POROWNANIE=32, 
+		NIEROWNE=33, I=34, LUB=35, ZWIEKSZENIE=36, ZMNIEJSZENIE=37, ZNAK_MATEMATYCZNY=38, 
+		BITI=39, BITLUB=40, MODULO=41, STRZALKA=42, PODWOJNYDWUKROPEK=43, ZNAKI=44, 
+		LICZBY=45, BIALE_ZNAKI=46, KOMENTARZ=47, LINIA_KOMENTARZA=48;
 	public static final int
-		RULE_program = 0, RULE_komunikat = 1, RULE_dzialanie_matematyczne = 2, 
-		RULE_utworzenie_stalej = 3, RULE_utworzenie_zmiennej = 4, RULE_zmiana_zmiennej = 5, 
-		RULE_wyrazenie = 6, RULE_zapytanie_jesli = 7, RULE_petla_dopoki = 8, RULE_petla_dla = 9, 
-		RULE_deklaracja_funkcji = 10, RULE_wywolanie_funkcji = 11, RULE_lewynaw = 12, 
-		RULE_prawynaw = 13;
+		RULE_program = 0, RULE_komunikat = 1, RULE_exit = 2, RULE_wypisz = 3, 
+		RULE_utworzenie_stalej = 4, RULE_utworzenie_zmiennej = 5, RULE_zmiana_zmiennej = 6, 
+		RULE_wyrazenie = 7, RULE_zapytanie_jesli = 8, RULE_petla_dopoki = 9, RULE_petla_dla = 10, 
+		RULE_deklaracja_funkcji = 11, RULE_wywolanie_funkcji = 12;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"program", "komunikat", "dzialanie_matematyczne", "utworzenie_stalej", 
-			"utworzenie_zmiennej", "zmiana_zmiennej", "wyrazenie", "zapytanie_jesli", 
-			"petla_dopoki", "petla_dla", "deklaracja_funkcji", "wywolanie_funkcji", 
-			"lewynaw", "prawynaw"
+			"program", "komunikat", "exit", "wypisz", "utworzenie_stalej", "utworzenie_zmiennej", 
+			"zmiana_zmiennej", "wyrazenie", "zapytanie_jesli", "petla_dopoki", "petla_dla", 
+			"deklaracja_funkcji", "wywolanie_funkcji"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'stala'", "'zmienna'", "'albo'", "'dla'", "'jesli'", "'idz'", 
-			"'zwroc'", "'dopoki'", "'funkcja'", null, "'null'", "'('", "')'", "'{'", 
-			"'}'", "'['", "']'", "'\"'", "';'", "','", "'.'", "'='", "'>'", "'<'", 
-			"'!'", "'?'", "':'", "'=='", "'!='", "'&&'", "'||'", "'++'", "'--'", 
-			null, "'&'", "'|'", "'%'", "'->'", "'::'"
+			null, "'EXIT'", "'wypisz'", null, null, "'stala'", "'zmienna'", "'albo'", 
+			"'dla'", "'jesli'", "'idz'", "'zwroc'", "'dopoki'", "'funkcja'", null, 
+			"'null'", "'('", "')'", "'{'", "'}'", "'['", "']'", "'\"'", "';'", "','", 
+			"'.'", "'='", "'>'", "'<'", "'!'", "'?'", "':'", "'=='", "'!='", "'&&'", 
+			"'||'", "'++'", "'--'", null, "'&'", "'|'", "'%'", "'->'", "'::'"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, "STALA", "ZMIENNA", "ALBO", "DLA", "JESLI", "IDZ", "ZWROC", "DOPOKI", 
-			"FUNKCJA", "BOOLEAN", "NIC", "LNAWIAS", "PNAWIAS", "LKLAMROWY", "PKLAMROWY", 
-			"LKWADRAT", "PKWADRAT", "CUDZYSLOW", "SREDNIK", "PRZECINEK", "KROPKA", 
-			"PRZYPISANIE", "WIEKSZE", "MNIEJSZE", "WYKRZYKNIK", "PYTAJNIK", "DWUKROPEK", 
-			"POROWNANIE", "NIEROWNE", "I", "LUB", "ZWIEKSZENIE", "ZMNIEJSZENIE", 
-			"ZNAK_MATEMATYCZNY", "BITI", "BITLUB", "MODULO", "STRZALKA", "PODWOJNYDWUKROPEK", 
-			"ZNAKI", "LICZBY", "BIALE_ZNAKI", "KOMENTARZ", "LINIA_KOMENTARZA"
+			null, null, null, "LEWYNAW", "PRAWYNAW", "STALA", "ZMIENNA", "ALBO", 
+			"DLA", "JESLI", "IDZ", "ZWROC", "DOPOKI", "FUNKCJA", "BOOLEAN", "NIC", 
+			"LNAWIAS", "PNAWIAS", "LKLAMROWY", "PKLAMROWY", "LKWADRAT", "PKWADRAT", 
+			"CUDZYSLOW", "SREDNIK", "PRZECINEK", "KROPKA", "PRZYPISANIE", "WIEKSZE", 
+			"MNIEJSZE", "WYKRZYKNIK", "PYTAJNIK", "DWUKROPEK", "POROWNANIE", "NIEROWNE", 
+			"I", "LUB", "ZWIEKSZENIE", "ZMNIEJSZENIE", "ZNAK_MATEMATYCZNY", "BITI", 
+			"BITLUB", "MODULO", "STRZALKA", "PODWOJNYDWUKROPEK", "ZNAKI", "LICZBY", 
+			"BIALE_ZNAKI", "KOMENTARZ", "LINIA_KOMENTARZA"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -134,11 +134,6 @@ public class ShadowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitProgram(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ShadowVisitor ) return ((ShadowVisitor<? extends T>)visitor).visitProgram(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final ProgramContext program() throws RecognitionException {
@@ -148,19 +143,19 @@ public class ShadowParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(33);
+			setState(31);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << STALA) | (1L << ZMIENNA) | (1L << DLA) | (1L << JESLI) | (1L << DOPOKI) | (1L << FUNKCJA) | (1L << LNAWIAS) | (1L << ZNAKI))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << LEWYNAW) | (1L << STALA) | (1L << ZMIENNA) | (1L << DLA) | (1L << JESLI) | (1L << DOPOKI) | (1L << FUNKCJA) | (1L << ZNAK_MATEMATYCZNY) | (1L << ZNAKI))) != 0)) {
 				{
 				{
-				setState(28);
+				setState(26);
 				komunikat();
-				setState(29);
+				setState(27);
 				match(SREDNIK);
 				}
 				}
-				setState(35);
+				setState(33);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
@@ -205,8 +200,11 @@ public class ShadowParser extends Parser {
 		public Wywolanie_funkcjiContext wywolanie_funkcji() {
 			return getRuleContext(Wywolanie_funkcjiContext.class,0);
 		}
-		public Dzialanie_matematyczneContext dzialanie_matematyczne() {
-			return getRuleContext(Dzialanie_matematyczneContext.class,0);
+		public ExitContext exit() {
+			return getRuleContext(ExitContext.class,0);
+		}
+		public WypiszContext wypisz() {
+			return getRuleContext(WypiszContext.class,0);
 		}
 		public KomunikatContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -220,88 +218,90 @@ public class ShadowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitKomunikat(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ShadowVisitor ) return ((ShadowVisitor<? extends T>)visitor).visitKomunikat(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final KomunikatContext komunikat() throws RecognitionException {
 		KomunikatContext _localctx = new KomunikatContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_komunikat);
 		try {
-			setState(46);
+			setState(45);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(36);
+				setState(34);
 				wyrazenie(0);
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(37);
+				setState(35);
 				utworzenie_stalej();
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(38);
+				setState(36);
 				utworzenie_zmiennej();
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(39);
+				setState(37);
 				zmiana_zmiennej();
 				}
 				break;
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(40);
+				setState(38);
 				zapytanie_jesli();
 				}
 				break;
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(41);
+				setState(39);
 				petla_dopoki();
 				}
 				break;
 			case 7:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(42);
+				setState(40);
 				petla_dla();
 				}
 				break;
 			case 8:
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(43);
+				setState(41);
 				deklaracja_funkcji();
 				}
 				break;
 			case 9:
 				enterOuterAlt(_localctx, 9);
 				{
-				setState(44);
+				setState(42);
 				wywolanie_funkcji();
 				}
 				break;
 			case 10:
 				enterOuterAlt(_localctx, 10);
 				{
-				setState(45);
-				dzialanie_matematyczne();
+				setState(43);
+				exit();
+				}
+				break;
+			case 11:
+				enterOuterAlt(_localctx, 11);
+				{
+				setState(44);
+				wypisz();
 				}
 				break;
 			}
@@ -317,47 +317,117 @@ public class ShadowParser extends Parser {
 		return _localctx;
 	}
 
-	public static class Dzialanie_matematyczneContext extends ParserRuleContext {
-		public WyrazenieContext lewa;
-		public WyrazenieContext prawa;
-		public TerminalNode ZNAK_MATEMATYCZNY() { return getToken(ShadowParser.ZNAK_MATEMATYCZNY, 0); }
-		public List<WyrazenieContext> wyrazenie() {
-			return getRuleContexts(WyrazenieContext.class);
-		}
-		public WyrazenieContext wyrazenie(int i) {
-			return getRuleContext(WyrazenieContext.class,i);
-		}
-		public Dzialanie_matematyczneContext(ParserRuleContext parent, int invokingState) {
+	public static class ExitContext extends ParserRuleContext {
+		public ExitContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_dzialanie_matematyczne; }
+		@Override public int getRuleIndex() { return RULE_exit; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).enterDzialanie_matematyczne(this);
+			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).enterExit(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitDzialanie_matematyczne(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ShadowVisitor ) return ((ShadowVisitor<? extends T>)visitor).visitDzialanie_matematyczne(this);
-			else return visitor.visitChildren(this);
+			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitExit(this);
 		}
 	}
 
-	public final Dzialanie_matematyczneContext dzialanie_matematyczne() throws RecognitionException {
-		Dzialanie_matematyczneContext _localctx = new Dzialanie_matematyczneContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_dzialanie_matematyczne);
+	public final ExitContext exit() throws RecognitionException {
+		ExitContext _localctx = new ExitContext(_ctx, getState());
+		enterRule(_localctx, 4, RULE_exit);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(48);
-			((Dzialanie_matematyczneContext)_localctx).lewa = wyrazenie(0);
+			setState(47);
+			match(T__0);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class WypiszContext extends ParserRuleContext {
+		public Token lewa;
+		public List<TerminalNode> ZNAKI() { return getTokens(ShadowParser.ZNAKI); }
+		public TerminalNode ZNAKI(int i) {
+			return getToken(ShadowParser.ZNAKI, i);
+		}
+		public List<TerminalNode> WYKRZYKNIK() { return getTokens(ShadowParser.WYKRZYKNIK); }
+		public TerminalNode WYKRZYKNIK(int i) {
+			return getToken(ShadowParser.WYKRZYKNIK, i);
+		}
+		public List<TerminalNode> CUDZYSLOW() { return getTokens(ShadowParser.CUDZYSLOW); }
+		public TerminalNode CUDZYSLOW(int i) {
+			return getToken(ShadowParser.CUDZYSLOW, i);
+		}
+		public List<TerminalNode> PRZECINEK() { return getTokens(ShadowParser.PRZECINEK); }
+		public TerminalNode PRZECINEK(int i) {
+			return getToken(ShadowParser.PRZECINEK, i);
+		}
+		public List<TerminalNode> KROPKA() { return getTokens(ShadowParser.KROPKA); }
+		public TerminalNode KROPKA(int i) {
+			return getToken(ShadowParser.KROPKA, i);
+		}
+		public List<TerminalNode> PYTAJNIK() { return getTokens(ShadowParser.PYTAJNIK); }
+		public TerminalNode PYTAJNIK(int i) {
+			return getToken(ShadowParser.PYTAJNIK, i);
+		}
+		public WypiszContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_wypisz; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).enterWypisz(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitWypisz(this);
+		}
+	}
+
+	public final WypiszContext wypisz() throws RecognitionException {
+		WypiszContext _localctx = new WypiszContext(_ctx, getState());
+		enterRule(_localctx, 6, RULE_wypisz);
+		int _la;
+		try {
+			int _alt;
+			enterOuterAlt(_localctx, 1);
+			{
 			setState(49);
-			match(ZNAK_MATEMATYCZNY);
-			setState(50);
-			((Dzialanie_matematyczneContext)_localctx).prawa = wyrazenie(0);
+			match(T__1);
+			setState(53);
+			_errHandler.sync(this);
+			_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
+			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
+				if ( _alt==1 ) {
+					{
+					{
+					setState(50);
+					((WypiszContext)_localctx).lewa = _input.LT(1);
+					_la = _input.LA(1);
+					if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << CUDZYSLOW) | (1L << PRZECINEK) | (1L << KROPKA) | (1L << WYKRZYKNIK) | (1L << PYTAJNIK) | (1L << ZNAKI))) != 0)) ) {
+						((WypiszContext)_localctx).lewa = (Token)_errHandler.recoverInline(this);
+					}
+					else {
+						if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+						_errHandler.reportMatch(this);
+						consume();
+					}
+					}
+					} 
+				}
+				setState(55);
+				_errHandler.sync(this);
+				_alt = getInterpreter().adaptivePredict(_input,2,_ctx);
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -402,27 +472,22 @@ public class ShadowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitUtworzeniestalej(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ShadowVisitor ) return ((ShadowVisitor<? extends T>)visitor).visitUtworzeniestalej(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Utworzenie_stalejContext utworzenie_stalej() throws RecognitionException {
 		Utworzenie_stalejContext _localctx = new Utworzenie_stalejContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_utworzenie_stalej);
+		enterRule(_localctx, 8, RULE_utworzenie_stalej);
 		try {
 			_localctx = new UtworzeniestalejContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(52);
+			setState(56);
 			match(STALA);
-			setState(53);
+			setState(57);
 			((UtworzeniestalejContext)_localctx).lewa = wyrazenie(0);
-			setState(54);
+			setState(58);
 			match(PRZYPISANIE);
-			setState(55);
+			setState(59);
 			((UtworzeniestalejContext)_localctx).prawa = wyrazenie(0);
 			}
 		}
@@ -468,27 +533,22 @@ public class ShadowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitUtworzeniezmiennej(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ShadowVisitor ) return ((ShadowVisitor<? extends T>)visitor).visitUtworzeniezmiennej(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Utworzenie_zmiennejContext utworzenie_zmiennej() throws RecognitionException {
 		Utworzenie_zmiennejContext _localctx = new Utworzenie_zmiennejContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_utworzenie_zmiennej);
+		enterRule(_localctx, 10, RULE_utworzenie_zmiennej);
 		try {
 			_localctx = new UtworzeniezmiennejContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(57);
+			setState(61);
 			match(ZMIENNA);
-			setState(58);
+			setState(62);
 			((UtworzeniezmiennejContext)_localctx).lewa = wyrazenie(0);
-			setState(59);
+			setState(63);
 			match(PRZYPISANIE);
-			setState(60);
+			setState(64);
 			((UtworzeniezmiennejContext)_localctx).prawa = wyrazenie(0);
 			}
 		}
@@ -533,25 +593,20 @@ public class ShadowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitZmianazmiennej(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ShadowVisitor ) return ((ShadowVisitor<? extends T>)visitor).visitZmianazmiennej(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Zmiana_zmiennejContext zmiana_zmiennej() throws RecognitionException {
 		Zmiana_zmiennejContext _localctx = new Zmiana_zmiennejContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_zmiana_zmiennej);
+		enterRule(_localctx, 12, RULE_zmiana_zmiennej);
 		try {
 			_localctx = new ZmianazmiennejContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(62);
+			setState(66);
 			((ZmianazmiennejContext)_localctx).lewa = wyrazenie(0);
-			setState(63);
+			setState(67);
 			match(PRZYPISANIE);
-			setState(64);
+			setState(68);
 			((ZmianazmiennejContext)_localctx).prawa = wyrazenie(0);
 			}
 		}
@@ -577,6 +632,26 @@ public class ShadowParser extends Parser {
 			super.copyFrom(ctx);
 		}
 	}
+	public static class WyrazeniematematyczneContext extends WyrazenieContext {
+		public WyrazenieContext lewa;
+		public WyrazenieContext prawa;
+		public TerminalNode ZNAK_MATEMATYCZNY() { return getToken(ShadowParser.ZNAK_MATEMATYCZNY, 0); }
+		public List<WyrazenieContext> wyrazenie() {
+			return getRuleContexts(WyrazenieContext.class);
+		}
+		public WyrazenieContext wyrazenie(int i) {
+			return getRuleContext(WyrazenieContext.class,i);
+		}
+		public WyrazeniematematyczneContext(WyrazenieContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).enterWyrazeniematematyczne(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitWyrazeniematematyczne(this);
+		}
+	}
 	public static class WyrazeniezwiekszenieContext extends WyrazenieContext {
 		public WyrazenieContext lewa;
 		public TerminalNode ZWIEKSZENIE() { return getToken(ShadowParser.ZWIEKSZENIE, 0); }
@@ -591,11 +666,6 @@ public class ShadowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitWyrazeniezwiekszenie(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ShadowVisitor ) return ((ShadowVisitor<? extends T>)visitor).visitWyrazeniezwiekszenie(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 	public static class WyrazeniezmniejszenieContext extends WyrazenieContext {
@@ -613,11 +683,6 @@ public class ShadowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitWyrazeniezmniejszenie(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ShadowVisitor ) return ((ShadowVisitor<? extends T>)visitor).visitWyrazeniezmniejszenie(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 	public static class WyrazeniefunkcjaContext extends WyrazenieContext {
 		public Wywolanie_funkcjiContext wywolanie_funkcji() {
@@ -632,22 +697,29 @@ public class ShadowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitWyrazeniefunkcja(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ShadowVisitor ) return ((ShadowVisitor<? extends T>)visitor).visitWyrazeniefunkcja(this);
-			else return visitor.visitChildren(this);
-		}
 	}
-	public static class WyrazenienawiasContext extends WyrazenieContext {
-		public LewynawContext lewynaw() {
-			return getRuleContext(LewynawContext.class,0);
-		}
+	public static class KolejnedzialanieContext extends WyrazenieContext {
+		public WyrazenieContext prawa;
+		public TerminalNode ZNAK_MATEMATYCZNY() { return getToken(ShadowParser.ZNAK_MATEMATYCZNY, 0); }
 		public WyrazenieContext wyrazenie() {
 			return getRuleContext(WyrazenieContext.class,0);
 		}
-		public PrawynawContext prawynaw() {
-			return getRuleContext(PrawynawContext.class,0);
+		public KolejnedzialanieContext(WyrazenieContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).enterKolejnedzialanie(this);
 		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitKolejnedzialanie(this);
+		}
+	}
+	public static class WyrazenienawiasContext extends WyrazenieContext {
+		public TerminalNode LEWYNAW() { return getToken(ShadowParser.LEWYNAW, 0); }
+		public WyrazenieContext wyrazenie() {
+			return getRuleContext(WyrazenieContext.class,0);
+		}
+		public TerminalNode PRAWYNAW() { return getToken(ShadowParser.PRAWYNAW, 0); }
 		public WyrazenienawiasContext(WyrazenieContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
@@ -656,11 +728,6 @@ public class ShadowParser extends Parser {
 		@Override
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitWyrazenienawias(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ShadowVisitor ) return ((ShadowVisitor<? extends T>)visitor).visitWyrazenienawias(this);
-			else return visitor.visitChildren(this);
 		}
 	}
 	public static class WyrazenieznakoweContext extends WyrazenieContext {
@@ -674,11 +741,6 @@ public class ShadowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitWyrazenieznakowe(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ShadowVisitor ) return ((ShadowVisitor<? extends T>)visitor).visitWyrazenieznakowe(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final WyrazenieContext wyrazenie() throws RecognitionException {
@@ -690,27 +752,27 @@ public class ShadowParser extends Parser {
 		int _parentState = getState();
 		WyrazenieContext _localctx = new WyrazenieContext(_ctx, _parentState);
 		WyrazenieContext _prevctx = _localctx;
-		int _startState = 12;
-		enterRecursionRule(_localctx, 12, RULE_wyrazenie, _p);
+		int _startState = 14;
+		enterRecursionRule(_localctx, 14, RULE_wyrazenie, _p);
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(73);
+			setState(79);
 			_errHandler.sync(this);
 			switch (_input.LA(1)) {
-			case LNAWIAS:
+			case LEWYNAW:
 				{
 				_localctx = new WyrazenienawiasContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 
-				setState(67);
-				lewynaw();
-				setState(68);
+				setState(71);
+				match(LEWYNAW);
+				setState(72);
 				wyrazenie(0);
-				setState(69);
-				prawynaw();
+				setState(73);
+				match(PRAWYNAW);
 				}
 				break;
 			case FUNKCJA:
@@ -718,8 +780,19 @@ public class ShadowParser extends Parser {
 				_localctx = new WyrazeniefunkcjaContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(71);
+				setState(75);
 				wywolanie_funkcji();
+				}
+				break;
+			case ZNAK_MATEMATYCZNY:
+				{
+				_localctx = new KolejnedzialanieContext(_localctx);
+				_ctx = _localctx;
+				_prevctx = _localctx;
+				setState(76);
+				match(ZNAK_MATEMATYCZNY);
+				setState(77);
+				((KolejnedzialanieContext)_localctx).prawa = wyrazenie(2);
 				}
 				break;
 			case ZNAKI:
@@ -727,7 +800,7 @@ public class ShadowParser extends Parser {
 				_localctx = new WyrazenieznakoweContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
-				setState(72);
+				setState(78);
 				match(ZNAKI);
 				}
 				break;
@@ -735,45 +808,58 @@ public class ShadowParser extends Parser {
 				throw new NoViableAltException(this);
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(81);
+			setState(90);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
 			while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
 					_prevctx = _localctx;
 					{
-					setState(79);
+					setState(88);
 					_errHandler.sync(this);
-					switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
+					switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
 					case 1:
 						{
-						_localctx = new WyrazeniezwiekszenieContext(new WyrazenieContext(_parentctx, _parentState));
-						((WyrazeniezwiekszenieContext)_localctx).lewa = _prevctx;
+						_localctx = new WyrazeniematematyczneContext(new WyrazenieContext(_parentctx, _parentState));
+						((WyrazeniematematyczneContext)_localctx).lewa = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_wyrazenie);
-						setState(75);
-						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
-						setState(76);
-						match(ZWIEKSZENIE);
+						setState(81);
+						if (!(precpred(_ctx, 7))) throw new FailedPredicateException(this, "precpred(_ctx, 7)");
+						setState(82);
+						match(ZNAK_MATEMATYCZNY);
+						setState(83);
+						((WyrazeniematematyczneContext)_localctx).prawa = wyrazenie(8);
 						}
 						break;
 					case 2:
 						{
+						_localctx = new WyrazeniezwiekszenieContext(new WyrazenieContext(_parentctx, _parentState));
+						((WyrazeniezwiekszenieContext)_localctx).lewa = _prevctx;
+						pushNewRecursionContext(_localctx, _startState, RULE_wyrazenie);
+						setState(84);
+						if (!(precpred(_ctx, 6))) throw new FailedPredicateException(this, "precpred(_ctx, 6)");
+						setState(85);
+						match(ZWIEKSZENIE);
+						}
+						break;
+					case 3:
+						{
 						_localctx = new WyrazeniezmniejszenieContext(new WyrazenieContext(_parentctx, _parentState));
 						((WyrazeniezmniejszenieContext)_localctx).lewa = _prevctx;
 						pushNewRecursionContext(_localctx, _startState, RULE_wyrazenie);
-						setState(77);
-						if (!(precpred(_ctx, 4))) throw new FailedPredicateException(this, "precpred(_ctx, 4)");
-						setState(78);
+						setState(86);
+						if (!(precpred(_ctx, 5))) throw new FailedPredicateException(this, "precpred(_ctx, 5)");
+						setState(87);
 						match(ZMNIEJSZENIE);
 						}
 						break;
 					}
 					} 
 				}
-				setState(83);
+				setState(92);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
 			}
 			}
 		}
@@ -789,7 +875,22 @@ public class ShadowParser extends Parser {
 	}
 
 	public static class Zapytanie_jesliContext extends ParserRuleContext {
+		public WyrazenieContext lewa;
+		public WyrazenieContext prawa;
 		public TerminalNode JESLI() { return getToken(ShadowParser.JESLI, 0); }
+		public TerminalNode LEWYNAW() { return getToken(ShadowParser.LEWYNAW, 0); }
+		public TerminalNode PRAWYNAW() { return getToken(ShadowParser.PRAWYNAW, 0); }
+		public TerminalNode ZNAKI() { return getToken(ShadowParser.ZNAKI, 0); }
+		public List<WyrazenieContext> wyrazenie() {
+			return getRuleContexts(WyrazenieContext.class);
+		}
+		public WyrazenieContext wyrazenie(int i) {
+			return getRuleContext(WyrazenieContext.class,i);
+		}
+		public TerminalNode POROWNANIE() { return getToken(ShadowParser.POROWNANIE, 0); }
+		public TerminalNode WIEKSZE() { return getToken(ShadowParser.WIEKSZE, 0); }
+		public TerminalNode MNIEJSZE() { return getToken(ShadowParser.MNIEJSZE, 0); }
+		public TerminalNode NIEROWNE() { return getToken(ShadowParser.NIEROWNE, 0); }
 		public Zapytanie_jesliContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -802,21 +903,37 @@ public class ShadowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitZapytanie_jesli(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ShadowVisitor ) return ((ShadowVisitor<? extends T>)visitor).visitZapytanie_jesli(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Zapytanie_jesliContext zapytanie_jesli() throws RecognitionException {
 		Zapytanie_jesliContext _localctx = new Zapytanie_jesliContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_zapytanie_jesli);
+		enterRule(_localctx, 16, RULE_zapytanie_jesli);
+		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(84);
+			setState(93);
 			match(JESLI);
+			setState(94);
+			match(LEWYNAW);
+			setState(95);
+			((Zapytanie_jesliContext)_localctx).lewa = wyrazenie(0);
+			setState(96);
+			_la = _input.LA(1);
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << WIEKSZE) | (1L << MNIEJSZE) | (1L << POROWNANIE) | (1L << NIEROWNE))) != 0)) ) {
+			_errHandler.recoverInline(this);
+			}
+			else {
+				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+				_errHandler.reportMatch(this);
+				consume();
+			}
+			setState(97);
+			((Zapytanie_jesliContext)_localctx).prawa = wyrazenie(0);
+			setState(98);
+			match(PRAWYNAW);
+			setState(99);
+			match(ZNAKI);
 			}
 		}
 		catch (RecognitionException re) {
@@ -844,20 +961,15 @@ public class ShadowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitPetla_dopoki(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ShadowVisitor ) return ((ShadowVisitor<? extends T>)visitor).visitPetla_dopoki(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Petla_dopokiContext petla_dopoki() throws RecognitionException {
 		Petla_dopokiContext _localctx = new Petla_dopokiContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_petla_dopoki);
+		enterRule(_localctx, 18, RULE_petla_dopoki);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(86);
+			setState(101);
 			match(DOPOKI);
 			}
 		}
@@ -886,20 +998,15 @@ public class ShadowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitPetla_dla(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ShadowVisitor ) return ((ShadowVisitor<? extends T>)visitor).visitPetla_dla(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Petla_dlaContext petla_dla() throws RecognitionException {
 		Petla_dlaContext _localctx = new Petla_dlaContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_petla_dla);
+		enterRule(_localctx, 20, RULE_petla_dla);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(88);
+			setState(103);
 			match(DLA);
 			}
 		}
@@ -940,43 +1047,38 @@ public class ShadowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitDeklaracja_funkcji(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ShadowVisitor ) return ((ShadowVisitor<? extends T>)visitor).visitDeklaracja_funkcji(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Deklaracja_funkcjiContext deklaracja_funkcji() throws RecognitionException {
 		Deklaracja_funkcjiContext _localctx = new Deklaracja_funkcjiContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_deklaracja_funkcji);
+		enterRule(_localctx, 22, RULE_deklaracja_funkcji);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(90);
+			setState(105);
 			match(FUNKCJA);
-			setState(91);
+			setState(106);
 			wyrazenie(0);
-			setState(92);
+			setState(107);
 			match(PRZYPISANIE);
-			setState(93);
+			setState(108);
 			match(LNAWIAS);
-			setState(97);
+			setState(112);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << STALA) | (1L << ZMIENNA) | (1L << DLA) | (1L << JESLI) | (1L << DOPOKI) | (1L << FUNKCJA) | (1L << LNAWIAS) | (1L << ZNAKI))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__1) | (1L << LEWYNAW) | (1L << STALA) | (1L << ZMIENNA) | (1L << DLA) | (1L << JESLI) | (1L << DOPOKI) | (1L << FUNKCJA) | (1L << ZNAK_MATEMATYCZNY) | (1L << ZNAKI))) != 0)) {
 				{
 				{
-				setState(94);
+				setState(109);
 				komunikat();
 				}
 				}
-				setState(99);
+				setState(114);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(100);
+			setState(115);
 			match(PNAWIAS);
 			}
 		}
@@ -1013,138 +1115,37 @@ public class ShadowParser extends Parser {
 		public void exitRule(ParseTreeListener listener) {
 			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitWywolanie_funkcji(this);
 		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ShadowVisitor ) return ((ShadowVisitor<? extends T>)visitor).visitWywolanie_funkcji(this);
-			else return visitor.visitChildren(this);
-		}
 	}
 
 	public final Wywolanie_funkcjiContext wywolanie_funkcji() throws RecognitionException {
 		Wywolanie_funkcjiContext _localctx = new Wywolanie_funkcjiContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_wywolanie_funkcji);
+		enterRule(_localctx, 24, RULE_wywolanie_funkcji);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(102);
+			setState(117);
 			match(FUNKCJA);
-			setState(103);
+			setState(118);
 			wyrazenie(0);
-			setState(104);
+			setState(119);
 			match(LNAWIAS);
-			setState(108);
+			setState(123);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << FUNKCJA) | (1L << LNAWIAS) | (1L << ZNAKI))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << LEWYNAW) | (1L << FUNKCJA) | (1L << ZNAK_MATEMATYCZNY) | (1L << ZNAKI))) != 0)) {
 				{
 				{
-				setState(105);
+				setState(120);
 				wyrazenie(0);
 				}
 				}
-				setState(110);
+				setState(125);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(111);
+			setState(126);
 			match(PNAWIAS);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class LewynawContext extends ParserRuleContext {
-		public TerminalNode LNAWIAS() { return getToken(ShadowParser.LNAWIAS, 0); }
-		public TerminalNode LKWADRAT() { return getToken(ShadowParser.LKWADRAT, 0); }
-		public TerminalNode LKLAMROWY() { return getToken(ShadowParser.LKLAMROWY, 0); }
-		public LewynawContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_lewynaw; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).enterLewynaw(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitLewynaw(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ShadowVisitor ) return ((ShadowVisitor<? extends T>)visitor).visitLewynaw(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final LewynawContext lewynaw() throws RecognitionException {
-		LewynawContext _localctx = new LewynawContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_lewynaw);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(113);
-			match(LNAWIAS);
-			setState(114);
-			match(LKWADRAT);
-			setState(115);
-			match(LKLAMROWY);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class PrawynawContext extends ParserRuleContext {
-		public TerminalNode PNAWIAS() { return getToken(ShadowParser.PNAWIAS, 0); }
-		public TerminalNode PKLAMROWY() { return getToken(ShadowParser.PKLAMROWY, 0); }
-		public TerminalNode PKWADRAT() { return getToken(ShadowParser.PKWADRAT, 0); }
-		public PrawynawContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_prawynaw; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).enterPrawynaw(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof ShadowListener ) ((ShadowListener)listener).exitPrawynaw(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof ShadowVisitor ) return ((ShadowVisitor<? extends T>)visitor).visitPrawynaw(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-
-	public final PrawynawContext prawynaw() throws RecognitionException {
-		PrawynawContext _localctx = new PrawynawContext(_ctx, getState());
-		enterRule(_localctx, 26, RULE_prawynaw);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(117);
-			match(PNAWIAS);
-			setState(118);
-			match(PKLAMROWY);
-			setState(119);
-			match(PKWADRAT);
 			}
 		}
 		catch (RecognitionException re) {
@@ -1160,7 +1161,7 @@ public class ShadowParser extends Parser {
 
 	public boolean sempred(RuleContext _localctx, int ruleIndex, int predIndex) {
 		switch (ruleIndex) {
-		case 6:
+		case 7:
 			return wyrazenie_sempred((WyrazenieContext)_localctx, predIndex);
 		}
 		return true;
@@ -1168,44 +1169,49 @@ public class ShadowParser extends Parser {
 	private boolean wyrazenie_sempred(WyrazenieContext _localctx, int predIndex) {
 		switch (predIndex) {
 		case 0:
-			return precpred(_ctx, 5);
+			return precpred(_ctx, 7);
 		case 1:
-			return precpred(_ctx, 4);
+			return precpred(_ctx, 6);
+		case 2:
+			return precpred(_ctx, 5);
 		}
 		return true;
 	}
 
 	public static final String _serializedATN =
-		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3.|\4\2\t\2\4\3\t\3"+
-		"\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f"+
-		"\t\f\4\r\t\r\4\16\t\16\4\17\t\17\3\2\3\2\3\2\7\2\"\n\2\f\2\16\2%\13\2"+
-		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3\61\n\3\3\4\3\4\3\4\3\4\3"+
-		"\5\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\7\3\b\3\b\3\b\3\b"+
-		"\3\b\3\b\3\b\5\bL\n\b\3\b\3\b\3\b\3\b\7\bR\n\b\f\b\16\bU\13\b\3\t\3\t"+
-		"\3\n\3\n\3\13\3\13\3\f\3\f\3\f\3\f\3\f\7\fb\n\f\f\f\16\fe\13\f\3\f\3\f"+
-		"\3\r\3\r\3\r\3\r\7\rm\n\r\f\r\16\rp\13\r\3\r\3\r\3\16\3\16\3\16\3\16\3"+
-		"\17\3\17\3\17\3\17\3\17\2\3\16\20\2\4\6\b\n\f\16\20\22\24\26\30\32\34"+
-		"\2\2\2}\2#\3\2\2\2\4\60\3\2\2\2\6\62\3\2\2\2\b\66\3\2\2\2\n;\3\2\2\2\f"+
-		"@\3\2\2\2\16K\3\2\2\2\20V\3\2\2\2\22X\3\2\2\2\24Z\3\2\2\2\26\\\3\2\2\2"+
-		"\30h\3\2\2\2\32s\3\2\2\2\34w\3\2\2\2\36\37\5\4\3\2\37 \7\25\2\2 \"\3\2"+
-		"\2\2!\36\3\2\2\2\"%\3\2\2\2#!\3\2\2\2#$\3\2\2\2$\3\3\2\2\2%#\3\2\2\2&"+
-		"\61\5\16\b\2\'\61\5\b\5\2(\61\5\n\6\2)\61\5\f\7\2*\61\5\20\t\2+\61\5\22"+
-		"\n\2,\61\5\24\13\2-\61\5\26\f\2.\61\5\30\r\2/\61\5\6\4\2\60&\3\2\2\2\60"+
-		"\'\3\2\2\2\60(\3\2\2\2\60)\3\2\2\2\60*\3\2\2\2\60+\3\2\2\2\60,\3\2\2\2"+
-		"\60-\3\2\2\2\60.\3\2\2\2\60/\3\2\2\2\61\5\3\2\2\2\62\63\5\16\b\2\63\64"+
-		"\7$\2\2\64\65\5\16\b\2\65\7\3\2\2\2\66\67\7\3\2\2\678\5\16\b\289\7\30"+
-		"\2\29:\5\16\b\2:\t\3\2\2\2;<\7\4\2\2<=\5\16\b\2=>\7\30\2\2>?\5\16\b\2"+
-		"?\13\3\2\2\2@A\5\16\b\2AB\7\30\2\2BC\5\16\b\2C\r\3\2\2\2DE\b\b\1\2EF\5"+
-		"\32\16\2FG\5\16\b\2GH\5\34\17\2HL\3\2\2\2IL\5\30\r\2JL\7*\2\2KD\3\2\2"+
-		"\2KI\3\2\2\2KJ\3\2\2\2LS\3\2\2\2MN\f\7\2\2NR\7\"\2\2OP\f\6\2\2PR\7#\2"+
-		"\2QM\3\2\2\2QO\3\2\2\2RU\3\2\2\2SQ\3\2\2\2ST\3\2\2\2T\17\3\2\2\2US\3\2"+
-		"\2\2VW\7\7\2\2W\21\3\2\2\2XY\7\n\2\2Y\23\3\2\2\2Z[\7\6\2\2[\25\3\2\2\2"+
-		"\\]\7\13\2\2]^\5\16\b\2^_\7\30\2\2_c\7\16\2\2`b\5\4\3\2a`\3\2\2\2be\3"+
-		"\2\2\2ca\3\2\2\2cd\3\2\2\2df\3\2\2\2ec\3\2\2\2fg\7\17\2\2g\27\3\2\2\2"+
-		"hi\7\13\2\2ij\5\16\b\2jn\7\16\2\2km\5\16\b\2lk\3\2\2\2mp\3\2\2\2nl\3\2"+
-		"\2\2no\3\2\2\2oq\3\2\2\2pn\3\2\2\2qr\7\17\2\2r\31\3\2\2\2st\7\16\2\2t"+
-		"u\7\22\2\2uv\7\20\2\2v\33\3\2\2\2wx\7\17\2\2xy\7\21\2\2yz\7\23\2\2z\35"+
-		"\3\2\2\2\t#\60KQScn";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3\62\u0083\4\2\t\2"+
+		"\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13"+
+		"\t\13\4\f\t\f\4\r\t\r\4\16\t\16\3\2\3\2\3\2\7\2 \n\2\f\2\16\2#\13\2\3"+
+		"\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3\60\n\3\3\4\3\4\3\5\3\5"+
+		"\7\5\66\n\5\f\5\16\59\13\5\3\6\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\7\3\7\3\b"+
+		"\3\b\3\b\3\b\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\t\5\tR\n\t\3\t\3\t\3\t"+
+		"\3\t\3\t\3\t\3\t\7\t[\n\t\f\t\16\t^\13\t\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3"+
+		"\n\3\13\3\13\3\f\3\f\3\r\3\r\3\r\3\r\3\r\7\rq\n\r\f\r\16\rt\13\r\3\r\3"+
+		"\r\3\16\3\16\3\16\3\16\7\16|\n\16\f\16\16\16\177\13\16\3\16\3\16\3\16"+
+		"\2\3\20\17\2\4\6\b\n\f\16\20\22\24\26\30\32\2\4\6\2\30\30\32\33\37 .."+
+		"\4\2\35\36\"#\2\u0089\2!\3\2\2\2\4/\3\2\2\2\6\61\3\2\2\2\b\63\3\2\2\2"+
+		"\n:\3\2\2\2\f?\3\2\2\2\16D\3\2\2\2\20Q\3\2\2\2\22_\3\2\2\2\24g\3\2\2\2"+
+		"\26i\3\2\2\2\30k\3\2\2\2\32w\3\2\2\2\34\35\5\4\3\2\35\36\7\31\2\2\36 "+
+		"\3\2\2\2\37\34\3\2\2\2 #\3\2\2\2!\37\3\2\2\2!\"\3\2\2\2\"\3\3\2\2\2#!"+
+		"\3\2\2\2$\60\5\20\t\2%\60\5\n\6\2&\60\5\f\7\2\'\60\5\16\b\2(\60\5\22\n"+
+		"\2)\60\5\24\13\2*\60\5\26\f\2+\60\5\30\r\2,\60\5\32\16\2-\60\5\6\4\2."+
+		"\60\5\b\5\2/$\3\2\2\2/%\3\2\2\2/&\3\2\2\2/\'\3\2\2\2/(\3\2\2\2/)\3\2\2"+
+		"\2/*\3\2\2\2/+\3\2\2\2/,\3\2\2\2/-\3\2\2\2/.\3\2\2\2\60\5\3\2\2\2\61\62"+
+		"\7\3\2\2\62\7\3\2\2\2\63\67\7\4\2\2\64\66\t\2\2\2\65\64\3\2\2\2\669\3"+
+		"\2\2\2\67\65\3\2\2\2\678\3\2\2\28\t\3\2\2\29\67\3\2\2\2:;\7\7\2\2;<\5"+
+		"\20\t\2<=\7\34\2\2=>\5\20\t\2>\13\3\2\2\2?@\7\b\2\2@A\5\20\t\2AB\7\34"+
+		"\2\2BC\5\20\t\2C\r\3\2\2\2DE\5\20\t\2EF\7\34\2\2FG\5\20\t\2G\17\3\2\2"+
+		"\2HI\b\t\1\2IJ\7\5\2\2JK\5\20\t\2KL\7\6\2\2LR\3\2\2\2MR\5\32\16\2NO\7"+
+		"(\2\2OR\5\20\t\4PR\7.\2\2QH\3\2\2\2QM\3\2\2\2QN\3\2\2\2QP\3\2\2\2R\\\3"+
+		"\2\2\2ST\f\t\2\2TU\7(\2\2U[\5\20\t\nVW\f\b\2\2W[\7&\2\2XY\f\7\2\2Y[\7"+
+		"\'\2\2ZS\3\2\2\2ZV\3\2\2\2ZX\3\2\2\2[^\3\2\2\2\\Z\3\2\2\2\\]\3\2\2\2]"+
+		"\21\3\2\2\2^\\\3\2\2\2_`\7\13\2\2`a\7\5\2\2ab\5\20\t\2bc\t\3\2\2cd\5\20"+
+		"\t\2de\7\6\2\2ef\7.\2\2f\23\3\2\2\2gh\7\16\2\2h\25\3\2\2\2ij\7\n\2\2j"+
+		"\27\3\2\2\2kl\7\17\2\2lm\5\20\t\2mn\7\34\2\2nr\7\22\2\2oq\5\4\3\2po\3"+
+		"\2\2\2qt\3\2\2\2rp\3\2\2\2rs\3\2\2\2su\3\2\2\2tr\3\2\2\2uv\7\23\2\2v\31"+
+		"\3\2\2\2wx\7\17\2\2xy\5\20\t\2y}\7\22\2\2z|\5\20\t\2{z\3\2\2\2|\177\3"+
+		"\2\2\2}{\3\2\2\2}~\3\2\2\2~\u0080\3\2\2\2\177}\3\2\2\2\u0080\u0081\7\23"+
+		"\2\2\u0081\33\3\2\2\2\n!/\67QZ\\r}";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
