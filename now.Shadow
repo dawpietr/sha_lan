@@ -18,7 +18,26 @@ c++;
 a++;
 b--;
 c--;
-wypisz acotutajsiedzieje;
+wypisz porownanie.dobre;
+jesli ( 12 == 12 ) wypisz test1;
+wypisz porownanie.zle;
+jesli (12 == 13) wypisz test2;
+wypisz nierowne.dobre;
+jesli ( 12 != 13 ) wypisz test3;
+wypisz nierowne.zle;
+jesli ( 11 != 11 ) wypisz test4;
+wypisz mniejsze.dobre;
+jesli ( 19 < 22 ) wypisz test5;
+wypisz mniejsze.zle;
+jesli ( 26 < 12 ) wypisz test6;
+wypisz wieksze.dobre;
+jesli ( 12 > 1 ) wypisz test7;
+wypisz wieksze.zle;
+jesli ( 3 > 12 ) wypisz test8;
+wypisz rowne.cosik;
+jesli (a == 15) wypisz test9;
+
+wypisz koniec porownan;
 wypisz a co tutaj sie dzieje;//pominiecie komentarza za kodem wykonywalnym
 wypisz acotutajsiedzieje?,"".!;
 /*pomijanie
