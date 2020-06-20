@@ -34,14 +34,14 @@ wyrazenie          :lewa=wyrazenie ZNAK_MATEMATYCZNY prawa=wyrazenie            
                    |ZNAK_MATEMATYCZNY prawa=wyrazenie                           #kolejnedzialanie
                    |ZNAKI                                                       #wyrazenieznakowe
                     ;
-zapytanie_jesli     :JESLI LEWYNAW lewa=wyrazenie (POROWNANIE|WIEKSZE|MNIEJSZE|NIEROWNE) prawa=wyrazenie PRAWYNAW ZNAKI;
+zapytanie_jesli     :JESLI LEWYNAW lewa=wyrazenie znak=(POROWNANIE|WIEKSZE|MNIEJSZE|NIEROWNE) prawa=wyrazenie PRAWYNAW komunikat;
 petla_dopoki        :DOPOKI;
 petla_dla           :DLA;
 deklaracja_funkcji  :FUNKCJA wyrazenie PRZYPISANIE '(' (komunikat)* ')' ;
 wywolanie_funkcji   :FUNKCJA wyrazenie '(' (wyrazenie)* ')';
 
-LEWYNAW:'(''[''{';
-PRAWYNAW:')''}'']';
+LEWYNAW:'('|'['|'{';
+PRAWYNAW:')'|'}'|']';
 STALA   : 'stala';
 ZMIENNA : 'zmienna';
 ALBO    : 'albo';

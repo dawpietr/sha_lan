@@ -1,19 +1,12 @@
-import org.antlr.v4.runtime.*;
-import org.antlr.v4.runtime.misc.NotNull;
-import org.antlr.v4.runtime.tree.*;
-import org.antlr.v4.runtime.tree.TerminalNode;
-import org.antlr.v4.runtime.Token;
-
-
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import static java.lang.Float.parseFloat;
 
 
-public class MainShadow extends ShadowBaseVisitor <Object> {
+public class MainShadow extends ShadowBaseVisitor<Object> {
 
 
     public static void main(String[] args) throws IOException {
@@ -227,7 +220,6 @@ public class MainShadow extends ShadowBaseVisitor <Object> {
         System.out.println("???");
 
     }
-
 
 
 }
