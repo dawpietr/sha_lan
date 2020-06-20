@@ -1,4 +1,137 @@
-wygenerowanie gramatyki
+SHA-LAN
 
-java -jar ./lib/antlr-4.8-complete.jar -no-visitor -no-listener ./Shadow.g4 -o ./src
+Kod używanmy do generowania gramatyki uruchamiany w folderze z projektem:
+java -jar ./lib/antlr-4.8-complete.jar -no-visitor -listener ./Shadow.g4 -o ./src
+UWAGA, uruchomienie go na aktualnej wersji powoduje wygenerowanie nowego pliku ShadowBaseListener i niszczy całyt projekt, przed wywołaniem wykonać kopię tego pliku.
+
+Opis języka
+Shadow to prosty język utworzony w oparciu o Javę w zamyśle miał upraszczać przedstawienie i sposób działania interpretera dla dzieci (dlatego w większości zostął wykorzystany język polski)
+
+Aktualne możliwości:
+-Proste działania matematyczne (jedynie na dwóch zmiennych/liczbach/stałych)
+-Tworzenie osobnych zmiennych i stałych
+-Wypisywanie zmiennych,ciągów znaków
+-Funkcja komentarza zarówno przez pojedyńczą linię (//) jak i wiele z nich (/* */)
+-Wymuszenie zakończenia progrmau w którymkolwiek momencie komendą EXIT;
+
+Język posiada ogromne możliwości rozwoju
+
+Każda linia kończy się średnikiem jako oddzielenie kolejnych części programu (komunikatów).
+Zmienne i stałe są zapisywane do dwóch osobnych list, można to łatwo rozwiązać poprzez dodanie do konstruktora zmiennej "stala" określającej czy dana jest stała czy zmienna, natomiast odnoszę wrażenie, że jest to ciekawa indywidualność z jaką się jeszcze nie spotkałem.
+Wszystkie zmienne zapisywane są jako string i w momencie próby wykonania na nich dziłań są parsowane do double.
+
+Komenda zakończenia programu w jakimkolwiek jego momencie:
+EXIT;
+
+Wyświetla:
+Nastepuje zamkniecie aplikacji!
+
+Komenda wypisania zawartości umieszcczonej po wypisz aż do średnika (chyba że wystąpią niedozwolone znaki)
+wypisz cokolwiekzostaniezapisanepo"wypisz"zostanie wypisane na ekranie;
+
+Wyświetla:
+cokolwiekzostaniezapisanepo"wypisz"zostaniewypisanenaekranie
+
+Komenda utworzenia stalej o określonej nazwie i wartości, stałej nie da się później zmienić, raz przypisana nie zmienia wartości
+stala a = 12;
+
+Wyświetla:
+Utworzono stala a zawierajaca: 12
+
+Komenda utworzenia zmiennej o określonej nazwie i wartości, zmienną można dowolnie modyfikować w trakcie działania programu
+zmienna b = 13;
+
+Wyświetla:
+Utworzono zmienna b zawierajaca: 13
+
+Komenda zmiany wartosci zmiennej, ograniczona jak sama nazwa wskazuje do zmiennych, pozwala nadać jakiekolwiek wartosci liczbowe i literowe
+b = 15;
+
+Wyświetla:
+W zmiennej b zostala zmieniona wartosc na: 15.0
+
+Komenda działania matematycznego, obsługuje podstawowe działania jak dodawanie odejmowanie mnożenie dzielenie i potęgowanie 
+ale tylko dwóch elementów którymi mogą być zarówno cyfry jak i zmienne/stałe
+a+b;
+
+WYświetla:
+Dodawanie 12.0 + 15.0= 28.0
+
+
+
+
+Przykład kodu:
+kod wykonywany:
+1+2;
+2-5;
+2*3;
+9/3;
+2^4;
+stala a = 11;
+zmienna a = 15;
+zmienna b = 13;
+zmienna c = zmiennaliterowa;
+a+b;
+wypisz a;
+a=14;
+wypisz a;
+wypisz b;
+wypisz c;
+wypisz ab;
+c++;
+a++;
+b--;
+c--;
+wypisz acotutajsiedzieje;
+wypisz a co tutaj sie dzieje;//pominiecie komentarza za kodem wykonywalnym
+wypisz acotutajsiedzieje?,"".!;
+/*pomijanie
+kilku lini
+przez komentarz*/
+//pominiecie pojedynczej linii tekstu jako komentarz
+EXIT;
+
+Wynik wykonania powyzszego kodu (każdy linia opisuje swój wynik i działanie):
+Dodawanie 1.0 + 2.0= 3.0
+Odejmowanie 2.0 - 5.0= -3.0
+Mnozenie 2.0 * 3.0= 6.0
+Dzielenie 9.0 / 3.0= 3.0
+Potegowanie 2.0 ^ 4.0= 16.0
+Utworzono stala a zawierajaca: 11
+Utworzono zmienna a zawierajaca: 15
+Utworzono zmienna b zawierajaca: 13
+Utworzono zmienna c zawierajaca: zmiennaliterowa
+Dzialanie dla zmiennych
+Dodawanie 15.0 + 13.0= 28.0
+Dzialanie dla stalej i zmiennej
+Dodawanie 11.0 + 13.0= 24.0
+Zmienna a = 15
+Stala a = 11
+W zmiennej a zostala zmieniona wartosc na: 14
+Zmienna a = 14
+Stala a = 11
+Zmienna b = 13
+Zmienna c = zmiennaliterowa
+wypiszab
+Wartosc nie jest liczbowa
+W zmiennej a zostala zmieniona wartosc na: 15.0
+W zmiennej b zostala zmieniona wartosc na: 14.0
+Wartosc nie jest liczbowa
+wypiszacotutajsiedzieje
+wypiszacotutajsiedzieje
+wypiszacotutajsiedzieje?,"".!
+Nastepuje zamkniecie aplikacji!
+
+Process finished with exit code 0
+
+Źródła i poprzednie wersje projektu:
+https://github.com/dawpietr/sjik
+https://github.com/dawpietr/sha_lan-old
+https://stackoverflow.com/questions/6487593/what-does-fragment-mean-in-antlr
+https://craftinginterpreters.com/statements-and-state.html
+https://craftinginterpreters.com/local-variables.html
+https://ruslanspivak.com/lsbasi-part4/
+https://www.baeldung.com/java-antlr
+https://jakubdziworski.github.io/java/2016/04/01/antlr_visitor_vs_listener.html
+
 
