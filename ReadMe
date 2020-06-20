@@ -13,6 +13,7 @@ Aktualne możliwości:
 -Wypisywanie zmiennych,ciągów znaków
 -Funkcja komentarza zarówno przez pojedyńczą linię (//) jak i wiele z nich (/* */)
 -Wymuszenie zakończenia progrmau w którymkolwiek momencie komendą EXIT;
+-Prosta funkcja warunkowa jesli (porównanie: równe, rózne, mniejsze, większe) 
 
 Język posiada ogromne możliwości rozwoju
 
@@ -54,8 +55,18 @@ Komenda działania matematycznego, obsługuje podstawowe działania jak dodawani
 ale tylko dwóch elementów którymi mogą być zarówno cyfry jak i zmienne/stałe
 a+b;
 
-WYświetla:
+Wyświetla:
 Dodawanie 12.0 + 15.0= 28.0
+
+Komenda warunkowa, jesli warunek w nawiasach jest spełniony wykonuje komunikat podany po nim, w tym przypadku wypisuje informacje tam zawarte.
+jesli ( 11 != 11 ) wypisz test4;
+
+Wyświetla (w sumie nie wyświetla nic bo warunek fałszywy):
+
+jesli ( 12 != 13 ) wypisz test3;
+
+Wyświetla:
+test3
 
 
 
@@ -82,7 +93,26 @@ c++;
 a++;
 b--;
 c--;
-wypisz acotutajsiedzieje;
+wypisz porownanie.dobre;
+jesli ( 12 == 12 ) wypisz test1;
+wypisz porownanie.zle;
+jesli (12 == 13) wypisz test2;
+wypisz nierowne.dobre;
+jesli ( 12 != 13 ) wypisz test3;
+wypisz nierowne.zle;
+jesli ( 11 != 11 ) wypisz test4;
+wypisz mniejsze.dobre;
+jesli ( 19 < 22 ) wypisz test5;
+wypisz mniejsze.zle;
+jesli ( 26 < 12 ) wypisz test6;
+wypisz wieksze.dobre;
+jesli ( 12 > 1 ) wypisz test7;
+wypisz wieksze.zle;
+jesli ( 3 > 12 ) wypisz test8;
+wypisz rowne.cosik;
+jesli (a == 15) wypisz test9;
+
+wypisz koniec porownan;
 wypisz a co tutaj sie dzieje;//pominiecie komentarza za kodem wykonywalnym
 wypisz acotutajsiedzieje?,"".!;
 /*pomijanie
@@ -92,6 +122,7 @@ przez komentarz*/
 EXIT;
 
 Wynik wykonania powyzszego kodu (każdy linia opisuje swój wynik i działanie):
+/usr/lib/jvm/java-11-openjdk-amd64/bin/java -javaagent:/snap/intellij-idea-ultimate/228/lib/idea_rt.jar=36499:/snap/intellij-idea-ultimate/228/bin -Dfile.encoding=UTF-8 -classpath /home/shado/IdeaProjects/sha_lan/out/production/sha_lan:/home/shado/IdeaProjects/sha_lan/lib/antlr-4.8-complete.jar MainShadow
 Dodawanie 1.0 + 2.0= 3.0
 Odejmowanie 2.0 - 5.0= -3.0
 Mnozenie 2.0 * 3.0= 6.0
@@ -112,15 +143,31 @@ Zmienna a = 14
 Stala a = 11
 Zmienna b = 13
 Zmienna c = zmiennaliterowa
-wypiszab
+ab
 Wartosc nie jest liczbowa
 W zmiennej a zostala zmieniona wartosc na: 15.0
 W zmiennej b zostala zmieniona wartosc na: 14.0
 Wartosc nie jest liczbowa
-wypiszacotutajsiedzieje
-wypiszacotutajsiedzieje
-wypiszacotutajsiedzieje?,"".!
+porownanie.dobre
+test1
+porownanie.zle
+nierowne.dobre
+test3
+nierowne.zle
+mniejsze.dobre
+test5
+mniejsze.zle
+wieksze.dobre
+test7
+wieksze.zle
+rowne.cosik
+koniecporownan
+acotutajsiedzieje
+acotutajsiedzieje?,"".!
 Nastepuje zamkniecie aplikacji!
+
+Process finished with exit code 0
+
 
 Process finished with exit code 0
 
